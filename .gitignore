@@ -1,0 +1,10 @@
+# Ignore the backend environment variables
+server/.env
+
+# Ignore node_modules folders so your pushes are fast
+node_modules/
+ai-interviewer/node_modules/
+server/node_modules/
+
+# Ignore local log files
+*.log
