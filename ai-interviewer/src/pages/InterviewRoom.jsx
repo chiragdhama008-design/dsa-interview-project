@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { Mic, Camera, Clock3, Send, Bot, Award, CheckCircle, RefreshCw } from "lucide-react";
+import { Mic, Camera, Clock3, Send, Bot, Award, CheckCircle, RefreshCw, ThumbsUp, Sparkles, TrendingUp } from "lucide-react";
 import Sidebar from "../components/Sidebar";
 
 export default function InterviewRoom() {
@@ -12,7 +12,8 @@ export default function InterviewRoom() {
     difficulty,
     duration,
     customQuestions,
-    isResumeInterview
+    isResumeInterview,
+    topic
   } = location.state || {};
 
   const standardQuestions = [
@@ -28,6 +29,7 @@ export default function InterviewRoom() {
     switch (duration) {
       case "15 Min": return 15 * 60;
       case "30 Min": return 30 * 60;
+      case "45 Min": return 45 * 60;
       default: return 15 * 60;
     }
   };
@@ -35,11 +37,7 @@ export default function InterviewRoom() {
   const [timeLeft, setTimeLeft] = useState(getInitialTime());
   const [transcript, setTranscript] = useState("");
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  
-  // Track structured question & answer pairs
   const [historyLog, setHistoryLog] = useState([]);
-  
-  // Evaluation States
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [feedbackData, setFeedbackData] = useState(null);
 
@@ -69,10 +67,12 @@ export default function InterviewRoom() {
       return;
     }
 
-    // Store the pair matching backend parameter rules
+    const targetQuestion = activeQuestions[currentQuestion];
+    const questionString = typeof targetQuestion === "object" ? targetQuestion.question : targetQuestion;
+
     const updatedHistory = [
       ...historyLog,
-      { questionText: activeQuestions[currentQuestion], answerText: transcript }
+      { questionText: questionString, answerText: transcript }
     ];
     setHistoryLog(updatedHistory);
 
@@ -80,26 +80,27 @@ export default function InterviewRoom() {
       setCurrentQuestion(currentQuestion + 1);
       setTranscript("");
     } else {
-      // LAST QUESTION COMPLETED: Trigger database storage and fetch AI evaluation reports
       try {
         setIsSubmitting(true);
         
-        // Locate resumeId safely out of active storage references if required
-        const storedResumeId = location.state?.resumeId || localStorage.getItem("lastActiveResumeId") || 1;
+        const bodyPayload = { interviewAnswers: updatedHistory };
+        
+        if (isResumeInterview !== false && (location.state?.resumeId || localStorage.getItem("lastActiveResumeId"))) {
+          bodyPayload.resumeId = location.state?.resumeId || localStorage.getItem("lastActiveResumeId");
+        } else {
+          bodyPayload.topic = topic || domain || "General Track";
+        }
 
         const response = await fetch("http://localhost:5000/api/interview/evaluate", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            resumeId: storedResumeId,
-            interviewAnswers: updatedHistory
-          })
+          body: JSON.stringify(bodyPayload)
         });
 
         const data = await response.json();
         if (!response.ok) throw new Error(data.message || "Failed to parse feedback.");
 
-        setFeedbackData(data); // Switches screen to full report dashboard view
+        setFeedbackData(data); 
       } catch (err) {
         console.error(err);
         alert("Error compiling feedback metrics: " + err.message);
@@ -126,9 +127,6 @@ export default function InterviewRoom() {
   const seconds = timeLeft % 60;
   const formattedTime = `${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`;
 
-  // ==========================================
-  // RENDER OPTION A: LOADING/SUBMITTING REPORT
-  // ==========================================
   if (isSubmitting) {
     return (
       <div className="flex min-h-screen bg-slate-950 text-white items-center justify-center">
@@ -142,86 +140,137 @@ export default function InterviewRoom() {
   }
 
   // ==========================================
-  // RENDER OPTION B: SHOW DETAILED FEEDBACK DASHBOARD
+  // STYLISH UPGRADED EVALUATION CARD VIEWER
   // ==========================================
   if (feedbackData) {
     return (
       <div className="flex min-h-screen bg-slate-950 text-white">
         <Sidebar />
-        <div className="flex-1 p-8 max-w-4xl mx-auto space-y-8">
+        <div className="flex-1 p-8 max-w-5xl mx-auto space-y-8 overflow-y-auto">
+          
+          {/* Main Top Header Banner */}
           <div className="flex items-center gap-4 border-b border-slate-800 pb-6">
-            <div className="p-3 bg-green-500/10 text-green-400 rounded-2xl">
-              <CheckCircle size={36} />
+            <div className="p-3 bg-gradient-to-tr from-purple-500 to-cyan-500 text-white rounded-2xl shadow-xl shadow-purple-500/10">
+              <CheckCircle size={32} />
             </div>
             <div>
-              <h1 className="text-4xl font-extrabold tracking-tight">Interview Report</h1>
-              <p className="text-slate-400 mt-1">Your responses have been saved to Supabase successfully.</p>
+              <h1 className="text-4xl font-black tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">
+                Interview Performance Review
+              </h1>
+              <p className="text-slate-400 mt-1">AI performance insights mapped to your track profile logs.</p>
             </div>
           </div>
 
-          {/* Metric Dashboard */}
-          <div className="grid grid-cols-3 gap-6">
-            <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 text-center">
-              <Award size={32} className="text-amber-400 mx-auto mb-2" />
-              <div className="text-sm text-slate-400 font-medium uppercase">Overall Grade</div>
-              <div className="text-5xl font-black text-white mt-1">{feedbackData.score}%</div>
+          {/* Metric Row Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Circular Metric Card */}
+            <div className="bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800/80 rounded-3xl p-6 flex flex-col justify-center items-center relative overflow-hidden group">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full blur-2xl group-hover:bg-purple-500/10 transition duration-500" />
+              <Award size={36} className="text-amber-400 mb-2" />
+              <div className="text-xs text-slate-400 font-bold uppercase tracking-wider">Overall Proficiency</div>
+              <div className="text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-amber-400 via-orange-400 to-yellow-200 mt-2">
+                {feedbackData.score}%
+              </div>
+              <div className="w-full bg-slate-800 h-1.5 rounded-full mt-4 overflow-hidden">
+                <div 
+                  className="bg-gradient-to-r from-amber-500 to-yellow-400 h-full rounded-full transition-all duration-1000" 
+                  style={{ width: `${feedbackData.score}%` }} 
+                />
+              </div>
             </div>
-            <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6 col-span-2 flex flex-col justify-center">
-              <div className="text-slate-400 text-sm font-medium uppercase">Session Context</div>
-              <div className="text-xl font-bold mt-2 text-cyan-300">{domain || "Software Engineer"}</div>
-              <div className="text-slate-400 text-sm mt-1">Target Difficulty Level: <span className="text-purple-400 font-semibold">{difficulty || "Intermediate"}</span></div>
+
+            {/* Content Scope Card */}
+            <div className="bg-slate-900/60 border border-slate-800/80 rounded-3xl p-6 col-span-2 flex flex-col justify-center relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-3xl" />
+              <div className="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Session Context</div>
+              <div className="text-2xl font-black text-cyan-400 tracking-wide">
+                {domain || topic || "Technical Core Domain"}
+              </div>
+              <p className="text-slate-400 text-sm mt-1.5 font-medium">
+                Target Difficulty Config: <span className="text-purple-400 font-bold">{difficulty || "Intermediate"}</span>
+              </p>
+              
+              {/* Executive Short Summary Box */}
+              {feedbackData.summary && (
+                <div className="mt-4 p-3.5 bg-slate-950/80 border border-slate-800/60 rounded-xl flex items-start gap-2.5 text-sm text-slate-300 leading-relaxed">
+                  <Sparkles size={16} className="text-purple-400 shrink-0 mt-0.5" />
+                  <span>{feedbackData.summary}</span>
+                </div>
+              )}
             </div>
           </div>
 
-          {/* Detailed Bullet Analysis Box */}
-          <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 space-y-4">
-            <h2 className="text-2xl font-bold flex items-center gap-2">
-              <Bot size={22} className="text-purple-400" />
-              AI Comprehensive Feedback
-            </h2>
-            <div className="text-slate-300 text-lg leading-relaxed whitespace-pre-line bg-slate-950 p-6 rounded-2xl border border-slate-800/80">
-              {feedbackData.feedback}
+          {/* Core Dual Breakdown Columns */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            {/* Column A: Key Technical Strengths */}
+            <div className="bg-slate-900/40 border border-green-500/10 rounded-3xl p-6 space-y-4 shadow-xl">
+              <h3 className="text-xl font-bold text-green-400 flex items-center gap-2 border-b border-slate-800/80 pb-3">
+                <ThumbsUp size={20} />
+                Key Strengths Verified
+              </h3>
+              <ul className="space-y-3">
+                {feedbackData.strongPoints && feedbackData.strongPoints.map((point, i) => (
+                  <li key={i} className="flex gap-3 bg-slate-950/50 border border-slate-900 p-4 rounded-2xl text-slate-300 text-sm leading-relaxed hover:border-green-500/20 transition">
+                    <CheckCircle size={16} className="text-green-500 shrink-0 mt-0.5" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
             </div>
+
+            {/* Column B: Practical Suggestions for Improvement */}
+            <div className="bg-slate-900/40 border border-amber-500/10 rounded-3xl p-6 space-y-4 shadow-xl">
+              <h3 className="text-xl font-bold text-amber-400 flex items-center gap-2 border-b border-slate-800/80 pb-3">
+                <TrendingUp size={20} />
+                Areas For Improvement
+              </h3>
+              <ul className="space-y-3">
+                {feedbackData.improvements && feedbackData.improvements.map((point, i) => (
+                  <li key={i} className="flex gap-3 bg-slate-950/50 border border-slate-900 p-4 rounded-2xl text-slate-300 text-sm leading-relaxed hover:border-amber-500/20 transition">
+                    <Bot size={16} className="text-amber-500 shrink-0 mt-0.5" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
           </div>
 
-          <button
-            onClick={() => navigate("/resume")}
-            className="px-8 py-4 bg-purple-600 hover:bg-purple-700 transition font-bold text-lg rounded-2xl w-full sm:w-auto"
-          >
-            Return to Resume Portal
-          </button>
+          {/* Dashboard Return Trigger Action Section */}
+          <div className="pt-2">
+            <button
+              onClick={() => navigate(isResumeInterview !== false ? "/resume" : "/interviews")}
+              className="px-8 py-4 bg-gradient-to-r from-purple-600 to-cyan-500 hover:opacity-90 font-bold text-base rounded-2xl w-full sm:w-auto shadow-lg shadow-purple-600/10 active:scale-98 transition duration-150"
+            >
+              Return to Dashboard Center
+            </button>
+          </div>
         </div>
       </div>
     );
   }
 
-  // ==========================================
-  // RENDER OPTION C: ACTIVE LIVE INTERVIEW ROOM
-  // ==========================================
+  const activeQuestionItem = activeQuestions[currentQuestion];
+  const activeQuestionText = typeof activeQuestionItem === "object" ? activeQuestionItem.question : activeQuestionItem;
+
   return (
     <div className="flex min-h-screen bg-slate-950 text-white">
       <Sidebar />
 
       <div className="flex-1 p-8">
-        {/* Header */}
         <div className="flex justify-between items-center">
           <div>
             <h1 className="text-4xl font-bold">
-              {isResumeInterview ? "AI Resume Interview Session" : "AI Interview Session"}
+              {isResumeInterview !== false ? "AI Resume Interview Session" : "AI Interview Session"}
             </h1>
-            <p className="text-slate-400 mt-2">
-              Answer naturally as if you're in a real interview.
-            </p>
+            <p className="text-slate-400 mt-2">Answer naturally as if you're in a real interview.</p>
 
             <div className="flex gap-3 mt-4">
-              <span className="px-4 py-2 rounded-full bg-purple-600">
-                {domain || "General"}
-              </span>
-              <span className="px-4 py-2 rounded-full bg-cyan-600">
-                {difficulty || "Medium"}
-              </span>
+              <span className="px-4 py-2 rounded-full bg-purple-600">{domain || topic || "General"}</span>
+              <span className="px-4 py-2 rounded-full bg-cyan-600">{difficulty || "Medium"}</span>
               <span className="px-4 py-2 rounded-full bg-slate-700">
-                {isResumeInterview ? "Adaptive Timing" : (duration || "15 Min")}
+                {isResumeInterview !== false ? "Adaptive Timing" : (duration || "15 Min")}
               </span>
             </div>
           </div>
@@ -232,23 +281,15 @@ export default function InterviewRoom() {
           </div>
         </div>
 
-        {/* Main Grid */}
         <div className="grid grid-cols-3 gap-6 mt-8">
           <div className="col-span-2 bg-slate-900 border border-slate-800 rounded-3xl p-8">
             <div className="flex items-center gap-3">
               <Bot className="text-purple-400" />
-              <span className="text-slate-400">
-                Question {currentQuestion + 1} / {activeQuestions.length}
-              </span>
+              <span className="text-slate-400">Question {currentQuestion + 1} / {activeQuestions.length}</span>
             </div>
-            <h2 className="text-3xl font-bold mt-6 leading-relaxed">
-              {typeof activeQuestions[currentQuestion] === 'object' 
-                ? activeQuestions[currentQuestion].question 
-                : activeQuestions[currentQuestion]}
-            </h2>
+            <h2 className="text-3xl font-bold mt-6 leading-relaxed">{activeQuestionText}</h2>
           </div>
 
-          {/* Webcam Placeholder */}
           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6">
             <div className="flex items-center gap-2">
               <Camera className="text-cyan-400" />
@@ -260,7 +301,6 @@ export default function InterviewRoom() {
           </div>
         </div>
 
-        {/* Transcript Box */}
         <div className="mt-6 bg-slate-900 border border-slate-800 rounded-3xl p-8">
           <h2 className="text-2xl font-semibold">Live Transcript</h2>
           <textarea
@@ -271,7 +311,6 @@ export default function InterviewRoom() {
           />
         </div>
 
-        {/* Controls Layout */}
         <div className="flex gap-4 mt-6">
           <button
             onClick={startSpeechRecognition}
