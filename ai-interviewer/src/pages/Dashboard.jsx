@@ -4,20 +4,46 @@ import HeroBanner from "../components/HeroBanner";
 import StatCard from "../components/StatCard";
 import InterviewCard from "../components/InterviewCard";
 import ScoreChart from "../components/ScoreChart";
-import { Loader2, Calendar, Award, Layers } from "lucide-react";
+import { Loader2 } from "lucide-react";
 
 export default function Dashboard() {
   const [metrics, setMetrics] = useState(null);
   const [loading, setLoading] = useState(true);
 
-  // Fetch data dynamically on mount
   useEffect(() => {
     const fetchDashboardMetrics = async () => {
       try {
         const response = await fetch("http://localhost:5000/api/interview/global-analytics");
         const json = await response.json();
+        
         if (json.success) {
-          setMetrics(json.metrics);
+          const rawMetrics = json.metrics;
+
+          // Days of the week lookup table
+          const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+          // Safely format raw database items into objects Recharts understands
+          const formattedScoreTrend = (rawMetrics.scoreTrend || []).map((item) => {
+            // Fallback to item.day if your backend is already passing a string string day
+            let dayLabel = item.day; 
+
+            // If backend passes a timestamp (e.g., 'created_at'), parse it to a weekday
+            if (item.created_at) {
+              const dateObj = new Date(item.created_at);
+              dayLabel = daysOfWeek[dateObj.getDay()];
+            }
+
+            return {
+              day: dayLabel || "Day",
+              score: Number(item.score) || 0, // Ensure score is an absolute number
+            };
+          });
+
+          // Store the processed data back into state
+          setMetrics({
+            ...rawMetrics,
+            scoreTrend: formattedScoreTrend,
+          });
         }
       } catch (err) {
         console.error("Failed fetching live dashboard metrics:", err);
@@ -28,7 +54,6 @@ export default function Dashboard() {
     fetchDashboardMetrics();
   }, []);
 
-  // Display a clean loading indicator while communicating with the backend database
   if (loading) {
     return (
       <div className="flex min-h-screen bg-slate-950 text-white items-center justify-center">
@@ -37,7 +62,6 @@ export default function Dashboard() {
     );
   }
 
-  // Graceful fallback defaults if the database table runs empty
   const data = metrics || {
     totalInterviews: 0,
     averageScore: 0,
@@ -46,22 +70,21 @@ export default function Dashboard() {
     scoreTrend: []
   };
 
-  // Convert real metrics into the format expected by your StatCard components
   const dynamicStats = [
     {
       title: "TOTAL INTERVIEWS",
       value: data.totalInterviews,
-      icon: <Calendar size={20} className="text-purple-400" />,
+      trend: "", 
     },
     {
       title: "AVERAGE SCORE",
       value: `${data.averageScore}%`,
-      icon: <Award size={20} className="text-emerald-400" />,
+      trend: "",
     },
     {
       title: "SKILLS TESTED",
       value: data.skillsTestedCount,
-      icon: <Layers size={20} className="text-cyan-400" />,
+      trend: "", // Changed from "Distinct areas" for clarity
     }
   ];
 
@@ -79,14 +102,14 @@ export default function Dashboard() {
               key={item.title}
               title={item.title}
               value={item.value}
-              icon={item.icon}
+              trend={item.trend}
             />
           ))}
         </div>
 
-        {/* Dynamic Score Curve Component */}
+        {/* Dynamic Score Curve Component passing liveData prop */}
         <div className="mt-8">
-          <ScoreChart data={data.scoreTrend} />
+          <ScoreChart liveData={data.scoreTrend} />
         </div>
 
         {/* Recent Interviews History Feed */}
@@ -103,9 +126,9 @@ export default function Dashboard() {
             ) : (
               data.recentInterviews.map((item) => (
                 <InterviewCard
-                  key={item.id}
+                  key={item.id || item.title}
                   title={item.title}
-                  score={`${item.score}%`}
+                  score={`${item.score}`}
                   summary={item.summary}
                 />
               ))
