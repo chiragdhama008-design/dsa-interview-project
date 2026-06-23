@@ -139,16 +139,12 @@ export default function InterviewRoom() {
     );
   }
 
-  // ==========================================
-  // STYLISH UPGRADED EVALUATION CARD VIEWER
-  // ==========================================
   if (feedbackData) {
     return (
       <div className="flex min-h-screen bg-slate-950 text-white">
         <Sidebar />
         <div className="flex-1 p-8 max-w-5xl mx-auto space-y-8 overflow-y-auto">
           
-          {/* Main Top Header Banner */}
           <div className="flex items-center gap-4 border-b border-slate-800 pb-6">
             <div className="p-3 bg-gradient-to-tr from-purple-500 to-cyan-500 text-white rounded-2xl shadow-xl shadow-purple-500/10">
               <CheckCircle size={32} />
@@ -161,9 +157,7 @@ export default function InterviewRoom() {
             </div>
           </div>
 
-          {/* Metric Row Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Circular Metric Card */}
             <div className="bg-gradient-to-b from-slate-900 to-slate-950 border border-slate-800/80 rounded-3xl p-6 flex flex-col justify-center items-center relative overflow-hidden group">
               <div className="absolute top-0 right-0 w-24 h-24 bg-purple-500/5 rounded-full blur-2xl group-hover:bg-purple-500/10 transition duration-500" />
               <Award size={36} className="text-amber-400 mb-2" />
@@ -179,7 +173,6 @@ export default function InterviewRoom() {
               </div>
             </div>
 
-            {/* Content Scope Card */}
             <div className="bg-slate-900/60 border border-slate-800/80 rounded-3xl p-6 col-span-2 flex flex-col justify-center relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-cyan-500/5 rounded-full blur-3xl" />
               <div className="text-slate-400 text-xs font-bold uppercase tracking-wider mb-1">Session Context</div>
@@ -190,7 +183,6 @@ export default function InterviewRoom() {
                 Target Difficulty Config: <span className="text-purple-400 font-bold">{difficulty || "Intermediate"}</span>
               </p>
               
-              {/* Executive Short Summary Box */}
               {feedbackData.summary && (
                 <div className="mt-4 p-3.5 bg-slate-950/80 border border-slate-800/60 rounded-xl flex items-start gap-2.5 text-sm text-slate-300 leading-relaxed">
                   <Sparkles size={16} className="text-purple-400 shrink-0 mt-0.5" />
@@ -200,10 +192,7 @@ export default function InterviewRoom() {
             </div>
           </div>
 
-          {/* Core Dual Breakdown Columns */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            
-            {/* Column A: Key Technical Strengths */}
             <div className="bg-slate-900/40 border border-green-500/10 rounded-3xl p-6 space-y-4 shadow-xl">
               <h3 className="text-xl font-bold text-green-400 flex items-center gap-2 border-b border-slate-800/80 pb-3">
                 <ThumbsUp size={20} />
@@ -219,7 +208,6 @@ export default function InterviewRoom() {
               </ul>
             </div>
 
-            {/* Column B: Practical Suggestions for Improvement */}
             <div className="bg-slate-900/40 border border-amber-500/10 rounded-3xl p-6 space-y-4 shadow-xl">
               <h3 className="text-xl font-bold text-amber-400 flex items-center gap-2 border-b border-slate-800/80 pb-3">
                 <TrendingUp size={20} />
@@ -234,10 +222,8 @@ export default function InterviewRoom() {
                 ))}
               </ul>
             </div>
-
           </div>
 
-          {/* Dashboard Return Trigger Action Section */}
           <div className="pt-2">
             <button
               onClick={() => navigate(isResumeInterview !== false ? "/resume" : "/interviews")}
@@ -253,6 +239,10 @@ export default function InterviewRoom() {
 
   const activeQuestionItem = activeQuestions[currentQuestion];
   const activeQuestionText = typeof activeQuestionItem === "object" ? activeQuestionItem.question : activeQuestionItem;
+  
+  // Safe validation fallback to handle variable formats interchangeably
+  const activeCompanyTag = typeof activeQuestionItem === "object" ? (activeQuestionItem.company_tag || activeQuestionItem.companyTag) : null;
+  const activeContext = typeof activeQuestionItem === "object" ? (activeQuestionItem.real_world_context || activeQuestionItem.realWorldContext) : null;
 
   return (
     <div className="flex min-h-screen bg-slate-950 text-white">
@@ -282,12 +272,30 @@ export default function InterviewRoom() {
         </div>
 
         <div className="grid grid-cols-3 gap-6 mt-8">
-          <div className="col-span-2 bg-slate-900 border border-slate-800 rounded-3xl p-8">
-            <div className="flex items-center gap-3">
-              <Bot className="text-purple-400" />
-              <span className="text-slate-400">Question {currentQuestion + 1} / {activeQuestions.length}</span>
+          <div className="col-span-2 bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center justify-between gap-4 border-b border-slate-800 pb-4">
+                <div className="flex items-center gap-3">
+                  <Bot className="text-purple-400" />
+                  <span className="text-slate-400">Question {currentQuestion + 1} / {activeQuestions.length}</span>
+                </div>
+
+                {activeCompanyTag && (
+                  <div className="group relative flex items-center gap-1.5 px-3 py-1 text-xs font-bold rounded-full bg-indigo-500/10 text-indigo-300 border border-indigo-500/20 shadow-lg cursor-help transition-all hover:bg-indigo-500/20">
+                    <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
+                    🎯 Asked at <span className="text-white underline decoration-dashed decoration-indigo-400/50 underline-offset-2">{activeCompanyTag}</span>
+
+                    {activeContext && (
+                      <div className="absolute bottom-full right-0 mb-2 w-72 p-3 bg-slate-950 border border-slate-800 text-slate-300 rounded-xl text-xs font-normal shadow-2xl opacity-0 scale-95 pointer-events-none group-hover:opacity-100 group-hover:scale-100 transition-all duration-200 z-50 leading-relaxed">
+                        <p className="font-bold text-white mb-1">Interview Context:</p>
+                        {activeContext}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+              <h2 className="text-3xl font-bold mt-6 leading-relaxed">{activeQuestionText}</h2>
             </div>
-            <h2 className="text-3xl font-bold mt-6 leading-relaxed">{activeQuestionText}</h2>
           </div>
 
           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-6">

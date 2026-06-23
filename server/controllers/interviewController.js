@@ -2,43 +2,72 @@ import ai from "../config/gemini.js";
 import supabase from "../config/supabase.js";
 import { Type } from "@google/genai";
 
-// 1. Existing resume question generator tracking logic
+// 1. Corrected Resume Question Generator
 export const generateQuestions = async (req, res) => {
   try {
     const { resumeId } = req.body;
     if (!resumeId) return res.status(400).json({ success: false, message: "Missing parameter: resumeId is required." });
 
-    const { data: resumeData, error } = await supabase.from("resumes").select("*").eq("id", resumeId).single();
+    // FIX: Safely cast to numerical base-10 integer to fit your database schema's int8 layout
+    const parsedResumeId = parseInt(resumeId, 10);
+    if (isNaN(parsedResumeId)) {
+      return res.status(400).json({ success: false, message: "Invalid resumeId structure provided." });
+    }
+
+    const { data: resumeData, error } = await supabase.from("resumes").select("*").eq("id", parsedResumeId).single();
     if (error || !resumeData) return res.status(404).json({ success: false, message: "Resume record not found." });
 
     const resumeText = resumeData.parsed_text;
-    const prompt = `You are an expert technical interviewer. Analyze the candidate's resume below and generate exactly 10 relevant, short technical interview questions matching role: ${resumeData.role || "Software Engineer"} and difficulty: ${resumeData.difficulty || "Intermediate"}.\n\nContext:\n${resumeText}\n\nReturn ONLY a JSON string array of questions.`;
+    const prompt = `You are an expert technical interviewer. Analyze the candidate's resume below and generate exactly 10 relevant, short technical interview questions matching role: ${resumeData.role || "Software Engineer"} and difficulty: ${resumeData.difficulty || "Intermediate"}.
+    
+    CRITICAL RULE: Every generated question must map cleanly to an actual problem variation or conceptual topic frequently targeted by top-tier multinational corporations (e.g., Google, Microsoft, Amazon, Meta, Netflix, Apple). Assign the precise company tag and write a 1-sentence real-world interview execution context explaining why it fits.
+
+    Context:
+    ${resumeText}`;
 
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash",
       contents: prompt,
       config: {
         responseMimeType: "application/json",
-        responseSchema: { type: Type.ARRAY, items: { type: Type.STRING } },
+        responseSchema: { 
+          type: Type.ARRAY, 
+          items: { 
+            type: Type.OBJECT,
+            properties: {
+              question: { type: Type.STRING },
+              companyTag: { type: Type.STRING },
+              realWorldContext: { type: Type.STRING }
+            },
+            required: ["question", "companyTag", "realWorldContext"]
+          }
+        },
       },
     });
 
-    const questions = JSON.parse(response.text);
-    const rows = questions.map((q) => ({ resume_id: resumeId, question: q }));
+    const questionsData = JSON.parse(response.text);
     
-    await supabase.from("questions").delete().eq("resume_id", resumeId);
+    const rows = questionsData.map((q) => ({ 
+      resume_id: parsedResumeId, 
+      question: q.question,
+      company_tag: q.companyTag,
+      real_world_context: q.realWorldContext
+    }));
+    
+    // Clear old versions
+    await supabase.from("questions").delete().eq("resume_id", parsedResumeId);
     
     const { error: insertError } = await supabase.from("questions").insert(rows);
     if (insertError) throw new Error(`Supabase DB Write Error: ${insertError.message}`);
 
-    return res.status(200).json({ success: true, questions });
+    return res.status(200).json({ success: true, questions: rows });
   } catch (err) {
     console.error("Exception:", err);
     return res.status(500).json({ success: false, message: err.message });
   }
 };
 
-// 2. Generate 10 specialized topic questions based on dashboard selections
+// 2. Corrected Topic Question Generator
 export const generateTopicQuestions = async (req, res) => {
   try {
     const { domain, difficulty, duration } = req.body;
@@ -49,39 +78,52 @@ export const generateTopicQuestions = async (req, res) => {
 
     const prompt = `You are an expert technical interviewer. Generate exactly 10 highly professional, relevant technical interview questions for the following domain: "${domain}".
     Target difficulty level configuration: "${difficulty}". Estimated interview execution window: ${duration || "15 Min"}.
-    Return ONLY a JSON string array of questions. Do not embed any descriptive prose, extra text wrappers or markdown block tags outside the array format.`;
+    
+    CRITICAL RULE: Every generated question must map cleanly to an actual problem variation or conceptual topic frequently targeted by top-tier multinational corporations (e.g., Google, Microsoft, Amazon, Meta, Netflix, Apple). Assign the precise company tag and write a 1-sentence real-world interview execution context explaining why it fits.`;
 
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash",
       contents: prompt,
       config: {
         responseMimeType: "application/json",
-        responseSchema: { type: Type.ARRAY, items: { type: Type.STRING } },
+        responseSchema: { 
+          type: Type.ARRAY, 
+          items: { 
+            type: Type.OBJECT,
+            properties: {
+              question: { type: Type.STRING },
+              companyTag: { type: Type.STRING },
+              realWorldContext: { type: Type.STRING }
+            },
+            required: ["question", "companyTag", "realWorldContext"]
+          }
+        },
       },
     });
 
-    const questions = JSON.parse(response.text);
+    const questionsData = JSON.parse(response.text);
 
-    // Clear past standalone domain questions to keep data clean
     await supabase.from("questions").delete().eq("topic", domain).is("resume_id", null);
 
-    const rows = questions.map((q) => ({
+    const rows = questionsData.map((q) => ({
       topic: domain,
-      question: q,
+      question: q.question,
+      company_tag: q.companyTag,
+      real_world_context: q.realWorldContext,
       user_answer: null
     }));
 
     const { error: insertError } = await supabase.from("questions").insert(rows);
     if (insertError) throw new Error(`Supabase DB Write Error: ${insertError.message}`);
 
-    return res.status(200).json({ success: true, questions });
+    return res.status(200).json({ success: true, questions: rows });
   } catch (err) {
     console.error("Topic generation core exception:", err);
     return res.status(500).json({ success: false, message: err.message });
   }
 };
 
-// 3. UPDATED STYLE PIPELINE: Dynamic full-stack interview script evaluator with Structured Output
+// 3. Corrected Unified Evaluation Pipeline
 export const evaluateInterview = async (req, res) => {
   try {
     const { resumeId, topic, interviewAnswers } = req.body; 
@@ -90,15 +132,16 @@ export const evaluateInterview = async (req, res) => {
       return res.status(400).json({ success: false, message: "Missing required properties: interviewAnswers array." });
     }
 
-    // Update user responses inside the database
+    const parsedResumeId = resumeId ? parseInt(resumeId, 10) : null;
+
     for (const item of interviewAnswers) {
       let query = supabase
         .from("questions")
         .update({ user_answer: item.answerText })
         .eq("question", item.questionText);
 
-      if (resumeId) {
-        query = query.eq("resume_id", resumeId);
+      if (parsedResumeId && !isNaN(parsedResumeId)) {
+        query = query.eq("resume_id", parsedResumeId);
       } else if (topic) {
         query = query.eq("topic", topic).is("resume_id", null);
       }
@@ -142,15 +185,14 @@ export const evaluateInterview = async (req, res) => {
       }
     });
 
-    // Parse the structured data package cleanly
     const feedbackResult = JSON.parse(response.text);
 
     const sessionData = {
       overall_score: feedbackResult.score,
-      feedback: JSON.stringify(feedbackResult) // Storing structured string directly to remain compatible
+      feedback: JSON.stringify(feedbackResult)
     };
 
-    if (resumeId) sessionData.resume_id = resumeId;
+    if (parsedResumeId && !isNaN(parsedResumeId)) sessionData.resume_id = parsedResumeId;
     if (topic) sessionData.topic = topic;
 
     const { error: sessionErr } = await supabase
