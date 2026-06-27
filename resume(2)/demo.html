@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AI Interview Room — Report</title>
+<script src="https://unpkg.com/react@18.2.0/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.23.10/babel.min.js"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #0c0e12;
+    color: #d4d8e8;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #13161c; }
+  ::-webkit-scrollbar-thumb { background: #2e3650; border-radius: 3px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+
+<script type="text/babel">
+const { useState, useEffect, useRef, useCallback } = React;
+
+/* ── design tokens ───────────────────────────────────────────────────── */
+const C = {
+  bg:         "#0c0e12",
+  surface:    "#13161c",
+  surface2:   "#181c25",
+  border:     "#1f2430",
+  borderHi:   "#2e3650",
+  text:       "#d4d8e8",
+  muted:      "#5a6080",
+  label:      "#8892b0",
+  discomfort: "#f06464",
+  confidence: "#43d98c",
+  confusion:  "#f5a623",
+  engagement: "#4fc3f7",
+  improving:  "#43d98c",
+  declining:  "#f06464",
+  stable:     "#8892b0",
+};
+
+const API_BASE      = "http://localhost:8000";
+const POLL_INTERVAL = 3000;
+const EMOTIONS      = ["discomfort", "confidence", "confusion", "engagement"];
+const EM_META = {
+  discomfort: { name: "Discomfort", color: C.discomfort },
+  confidence: { name: "Confidence", color: C.confidence },
+  confusion:  { name: "Confusion",  color: C.confusion  },
+  engagement: { name: "Engagement", color: C.engagement },
+};
+const READINESS_COLOR = {
+  "Strong":     C.confidence,
+  "Adequate":   C.engagement,
+  "Needs Work": C.confusion,
+  "Struggling": C.discomfort,
+};
+const TREND_COLOR = t =>
+  t && t.includes("improv") ? C.improving :
+  t && t.includes("declin") ? C.declining : C.stable;
+
+/* ── mock data matching new interview_report.json structure ──────────── */
+const MOCK = {
+  _is_mock: true,
+  total_questions: 3,
+  total_duration: "5m 24s",
+  questions: [
+    {
+      question_number: 1, duration: "1m 45s", duration_seconds: 105,
+      readiness: { score: 72.1, label: "Adequate" },
+      stability: 74.2,
+      emotions: {
+        discomfort: { weighted: 38.4, label: "Mild",     peak: 62 },
+        confidence: { weighted: 54.1, label: "Moderate", peak: 81 },
+        confusion:  { weighted: 22.0, label: "Clear",    peak: 44 },
+        engagement: { weighted: 61.3, label: "Good",     peak: 89 },
+      },
+      peak_discomfort_t: [42.3, 62],
+    },
+    {
+      question_number: 2, duration: "2m 10s", duration_seconds: 130,
+      readiness: { score: 58.4, label: "Adequate" },
+      stability: 61.0,
+      emotions: {
+        discomfort: { weighted: 51.2, label: "Moderate", peak: 79 },
+        confidence: { weighted: 44.8, label: "Moderate", peak: 68 },
+        confusion:  { weighted: 38.5, label: "Occasional",peak: 72 },
+        engagement: { weighted: 47.6, label: "Moderate", peak: 75 },
+      },
+      peak_discomfort_t: [78.1, 79],
+    },
+    {
+      question_number: 3, duration: "1m 29s", duration_seconds: 89,
+      readiness: { score: 66.7, label: "Adequate" },
+      stability: 69.8,
+      emotions: {
+        discomfort: { weighted: 42.0, label: "Mild",     peak: 68 },
+        confidence: { weighted: 50.3, label: "Moderate", peak: 77 },
+        confusion:  { weighted: 29.1, label: "Occasional",peak: 55 },
+        engagement: { weighted: 55.8, label: "Good",     peak: 84 },
+      },
+      peak_discomfort_t: [55.6, 68],
+    },
+  ],
+  overall_emotions: {
+    discomfort: { average: 43.9, best: 38.4, worst: 51.2, trend: "↓ declining" },
+    confidence: { average: 49.7, best: 54.1, worst: 44.8, trend: "→ stable"    },
+    confusion:  { average: 29.9, best: 22.0, worst: 38.5, trend: "↓ declining" },
+    engagement: { average: 54.9, best: 61.3, worst: 47.6, trend: "→ stable"    },
+  },
+  overall_readiness: {
+    average: 65.7, best_q: 1, worst_q: 2,
+    trend: "→ stable", label: "Adequate",
+  },
+};
+
+/* ── helpers ─────────────────────────────────────────────────────────── */
+const fmtT = s => {
+  const m = Math.floor(s / 60), r = Math.floor(s % 60);
+  return `${m}:${String(r).padStart(2,"0")}`;
+};
+
+/* ── AnimatedBar ─────────────────────────────────────────────────────── */
+function AnimatedBar({ value, color, height = 6 }) {
+  const [w, setW] = useState(0);
+  useEffect(() => { const t = setTimeout(() => setW(value), 120); return () => clearTimeout(t); }, [value]);
+  return (
+    <div style={{ width:"100%", height, borderRadius:3, background:C.borderHi, overflow:"hidden" }}>
+      <div style={{ height:"100%", borderRadius:3, background:color, width:`${w}%`, transition:"width 1.2s cubic-bezier(.16,1,.3,1)" }} />
+    </div>
+  );
+}
+
+/* ── ReadinessRing ───────────────────────────────────────────────────── */
+function ReadinessRing({ score, label, size = 148 }) {
+  const [off, setOff] = useState(408);
+  const circ  = 408;
+  const color = READINESS_COLOR[label] || C.engagement;
+  useEffect(() => { const t = setTimeout(() => setOff(circ - (score / 100) * circ), 150); return () => clearTimeout(t); }, [score]);
+  return (
+    <div style={{ position:"relative", width:size, height:size, flexShrink:0 }}>
+      <svg width={size} height={size} viewBox="0 0 160 160" style={{ transform:"rotate(-90deg)" }}>
+        <circle cx="80" cy="80" r="65" fill="none" stroke={C.borderHi} strokeWidth="7" />
+        <circle cx="80" cy="80" r="65" fill="none"
+          stroke={color} strokeWidth="7" strokeLinecap="round"
+          strokeDasharray={circ} strokeDashoffset={off}
+          style={{ transition:"stroke-dashoffset 1.5s cubic-bezier(.16,1,.3,1)" }} />
+      </svg>
+      <div style={{ position:"absolute", inset:0, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center" }}>
+        <span style={{ fontFamily:"monospace", fontSize: size > 100 ? 36 : 22, fontWeight:700, lineHeight:1, color:C.text }}>{Math.round(score)}</span>
+        <span style={{ fontFamily:"monospace", fontSize:10, color:C.muted, marginTop:2 }}>/ 100</span>
+      </div>
+    </div>
+  );
+}
+
+/* ── SectionTitle ────────────────────────────────────────────────────── */
+const SectionTitle = ({ children }) => (
+  <div style={{
+    fontFamily:"monospace", fontSize:10, letterSpacing:"0.16em",
+    textTransform:"uppercase", color:C.muted,
+    paddingBottom:10, marginBottom:18, borderBottom:`1px solid ${C.border}`,
+  }}>{children}</div>
+);
+
+const Pill = ({ children, color }) => (
+  <span style={{
+    fontFamily:"monospace", fontSize:11, color: color || C.label,
+    background:C.surface2, border:`1px solid ${color || C.border}`,
+    borderRadius:4, padding:"3px 10px",
+  }}>{children}</span>
+);
+
+/* ── MiniSparkline — inline SVG timeline chart ───────────────────────── */
+function MiniSparkline({ data, color, width=120, height=28 }) {
+  if (!data || data.length < 2) return null;
+  const min = Math.min(...data), max = Math.max(...data);
+  const range = max - min || 1;
+  const pts = data.map((v, i) => {
+    const x = (i / (data.length - 1)) * width;
+    const y = height - ((v - min) / range) * height;
+    return `${x},${y}`;
+  }).join(" ");
+  return (
+    <svg width={width} height={height} style={{ display:"block" }}>
+      <polyline points={pts} fill="none" stroke={color} strokeWidth="1.5" strokeLinejoin="round" strokeLinecap="round" opacity="0.8" />
+    </svg>
+  );
+}
+
+/* ── QuestionCard ────────────────────────────────────────────────────── */
+function QuestionCard({ q, expanded, onToggle }) {
+  const ri    = q.readiness;
+  const color = READINESS_COLOR[ri.label] || C.engagement;
+  const peakT = q.peak_discomfort_t;
+
+  return (
+    <div style={{
+      background:C.surface, border:`1px solid ${expanded ? C.borderHi : C.border}`,
+      borderRadius:8, overflow:"hidden",
+      transition:"border-color .2s",
+    }}>
+      {/* Header row — always visible */}
+      <div
+        onClick={onToggle}
+        style={{
+          display:"grid",
+          gridTemplateColumns:"40px 1fr repeat(4,80px) 90px",
+          gap:0, alignItems:"center",
+          padding:"14px 20px", cursor:"pointer",
+        }}
+      >
+        {/* Q number */}
+        <span style={{ fontFamily:"monospace", fontSize:13, fontWeight:700, color:C.muted }}>Q{q.question_number}</span>
+
+        {/* Readiness pill + duration */}
+        <div style={{ display:"flex", flexDirection:"column", gap:2 }}>
+          <span style={{ fontSize:13, fontWeight:600, color }}>{ri.label}</span>
+          <span style={{ fontFamily:"monospace", fontSize:10, color:C.muted }}>{q.duration}</span>
+        </div>
+
+        {/* 4 emotion weighted scores */}
+        {EMOTIONS.map(em => (
+          <div key={em} style={{ textAlign:"center" }}>
+            <div style={{ fontFamily:"monospace", fontSize:13, fontWeight:700, color: EM_META[em].color }}>
+              {q.emotions[em].weighted.toFixed(0)}%
+            </div>
+            <div style={{ fontFamily:"monospace", fontSize:9, color:C.muted, letterSpacing:"0.08em" }}>
+              {EM_META[em].name.slice(0,4).toUpperCase()}
+            </div>
+          </div>
+        ))}
+
+        {/* Readiness score + chevron */}
+        <div style={{ display:"flex", alignItems:"center", justifyContent:"flex-end", gap:10 }}>
+          <span style={{ fontFamily:"monospace", fontSize:18, fontWeight:700, color }}>{ri.score.toFixed(0)}</span>
+          <span style={{ color:C.muted, fontSize:12, transform: expanded ? "rotate(180deg)" : "none", transition:"transform .2s" }}>▼</span>
+        </div>
+      </div>
+
+      {/* Expanded detail */}
+      {expanded && (
+        <div style={{ borderTop:`1px solid ${C.border}`, padding:"18px 20px", display:"flex", flexDirection:"column", gap:14 }}>
+          {/* Emotion bars */}
+          <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:"10px 24px" }}>
+            {EMOTIONS.map(em => {
+              const e = q.emotions[em];
+              return (
+                <div key={em}>
+                  <div style={{ display:"flex", justifyContent:"space-between", marginBottom:4 }}>
+                    <span style={{ fontSize:11, color:C.label }}>{EM_META[em].name}</span>
+                    <div style={{ display:"flex", gap:8 }}>
+                      <span style={{ fontFamily:"monospace", fontSize:10, color:C.muted }}>pk {e.peak}%</span>
+                      <span style={{ fontFamily:"monospace", fontSize:11, fontWeight:600, color:EM_META[em].color }}>{e.weighted.toFixed(1)}%</span>
+                    </div>
+                  </div>
+                  <AnimatedBar value={e.weighted} color={EM_META[em].color} height={5} />
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Peak discomfort moment */}
+          {peakT && (
+            <div style={{
+              background:C.surface2, border:`1px solid ${C.border}`,
+              borderRadius:6, padding:"8px 14px",
+              fontFamily:"monospace", fontSize:11, color:C.muted,
+              display:"flex", gap:16,
+            }}>
+              <span style={{ color:C.discomfort }}>⚡ peak discomfort</span>
+              <span>{peakT[1].toFixed(0)}% at {fmtT(peakT[0])}</span>
+              <span style={{ color:C.muted }}>stability {q.stability.toFixed(1)}%</span>
+            </div>
+          )}
+        </div>
+      )}
+    </div>
+  );
+}
+
+/* ── OverallEmotionRow ───────────────────────────────────────────────── */
+function OverallEmotionRow({ em, data }) {
+  const { name, color } = EM_META[em];
+  const trendColor = TREND_COLOR(data.trend);
+  return (
+    <div style={{
+      background:C.surface, border:`1px solid ${C.border}`,
+      borderRadius:8, padding:"16px 20px",
+      display:"grid", gridTemplateColumns:"140px 1fr auto", gap:"0 24px", alignItems:"center",
+    }}>
+      <div>
+        <div style={{ fontSize:13, fontWeight:600, marginBottom:2 }}>{name}</div>
+        <div style={{ fontFamily:"monospace", fontSize:10, color:trendColor }}>{data.trend}</div>
+      </div>
+      <div style={{ display:"flex", flexDirection:"column", gap:6 }}>
+        <AnimatedBar value={data.average} color={color} height={6} />
+        <div style={{ display:"flex", gap:20 }}>
+          {[["avg", data.average], ["best", data.best], ["worst", data.worst]].map(([k,v]) => (
+            <div key={k} style={{ display:"flex", flexDirection:"column" }}>
+              <span style={{ fontFamily:"monospace", fontSize:13, fontWeight:700, color:C.text }}>{v.toFixed(1)}%</span>
+              <span style={{ fontFamily:"monospace", fontSize:9, color:C.muted, letterSpacing:"0.1em", textTransform:"uppercase" }}>{k}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div style={{ width:2, height:48, background:color, borderRadius:1, opacity:0.5 }} />
+    </div>
+  );
+}
+
+/* ── CoachingNotes ───────────────────────────────────────────────────── */
+function CoachingNotes({ report }) {
+  const oe  = report.overall_emotions;
+  const ori = report.overall_readiness;
+  const notes = [];
+
+  if (oe.discomfort.average >= 55)
+    notes.push({ icon:"⚠", color:C.discomfort, text:"High discomfort sustained across the interview. Practice relaxation techniques before sessions." });
+  if (oe.confidence.average < 45)
+    notes.push({ icon:"⚠", color:C.discomfort, text:"Confidence was consistently low. Work on sustained eye contact and reducing head jitter." });
+  if (oe.confusion.average >= 40)
+    notes.push({ icon:"~", color:C.confusion, text:"Frequent confusion signals detected. Review question preparation and active listening cues." });
+  if (oe.engagement.average < 40)
+    notes.push({ icon:"~", color:C.confusion, text:"Low engagement throughout. Try nodding and leaning slightly forward during responses." });
+
+  const worstQ = report.questions[ori.worst_q - 1];
+  notes.push({
+    icon:"📊", color:C.label,
+    text:`Toughest question was Q${ori.worst_q} (readiness ${worstQ.readiness.score.toFixed(0)}%) — discomfort peaked at ${worstQ.emotions.discomfort.peak}%.`,
+  });
+
+  if (ori.trend && ori.trend.includes("improv"))
+    notes.push({ icon:"✔", color:C.confidence, text:"Positive trend — performance improved as the interview progressed." });
+  else if (ori.trend && ori.trend.includes("declin"))
+    notes.push({ icon:"⚠", color:C.confusion,  text:"Declining trend — fatigue or increasing difficulty detected toward the end." });
+
+  if (notes.length === 0)
+    notes.push({ icon:"✔", color:C.confidence, text:"No significant issues detected. Good consistent performance across all questions." });
+
+  return (
+    <div style={{ display:"flex", flexDirection:"column", gap:10 }}>
+      {notes.map((n, i) => (
+        <div key={i} style={{
+          background:C.surface, border:`1px solid ${C.border}`,
+          borderLeft:`3px solid ${n.color}`,
+          borderRadius:6, padding:"10px 16px",
+          display:"flex", gap:12, alignItems:"flex-start",
+          fontSize:12, color:C.label, lineHeight:1.6,
+        }}>
+          <span style={{ color:n.color, flexShrink:0 }}>{n.icon}</span>
+          <span>{n.text}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+/* ── WaitingScreen ───────────────────────────────────────────────────── */
+function WaitingScreen({ error, onUseMock }) {
+  const [dots, setDots] = useState(".");
+  useEffect(() => {
+    const t = setInterval(() => setDots(d => d.length >= 3 ? "." : d + "."), 600);
+    return () => clearInterval(t);
+  }, []);
+
+  const isConnErr = error && (error.includes("fetch") || error.includes("network") || error.includes("ERR_"));
+
+  return (
+    <div style={{ display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", minHeight:"60vh", gap:20, textAlign:"center" }}>
+      <div style={{ width:40, height:40, border:`2px solid ${C.border}`, borderTop:`2px solid ${error ? C.discomfort : C.engagement}`, borderRadius:"50%", animation:"spin 1s linear infinite" }} />
+
+      {error ? (
+        <div style={{ maxWidth:420 }}>
+          <div style={{ fontFamily:"monospace", fontSize:12, color:C.discomfort, marginBottom:10 }}>
+            ⚠ Cannot reach server — retrying{dots}
+          </div>
+          <div style={{
+            background:"#1a0e0e", border:`1px solid #3a1010`,
+            borderRadius:6, padding:"10px 16px", marginBottom:12,
+            fontFamily:"monospace", fontSize:11, color:"#cc6666", textAlign:"left",
+          }}>
+            {error}
+          </div>
+          {isConnErr && (
+            <div style={{ fontSize:12, color:C.muted, lineHeight:1.8 }}>
+              Make sure the backend is running:<br/>
+              <code style={{ color:C.engagement }}>uvicorn api:app --port 8000 --reload</code><br/>
+              <span style={{ fontSize:11 }}>Also check that no firewall is blocking port 8000.</span>
+            </div>
+          )}
+        </div>
+      ) : (
+        <div style={{ fontFamily:"monospace", fontSize:10, letterSpacing:"0.14em", textTransform:"uppercase", color:C.muted }}>
+          Waiting for new interview{dots}
+        </div>
+      )}
+
+      {!error && (
+        <p style={{ fontSize:13, color:C.muted, maxWidth:360, lineHeight:1.7 }}>
+          Complete an interview in the React app or run <code>main_interview_room.py</code>,
+          then press <strong style={{color:C.text}}>Q</strong> to finish.
+          The report appears here automatically.
+        </p>
+      )}
+
+      <button onClick={onUseMock} style={{
+        marginTop:4, fontFamily:"monospace", fontSize:11, letterSpacing:"0.1em",
+        textTransform:"uppercase", background:"transparent",
+        border:`1px solid ${C.border}`, borderRadius:4,
+        color:C.muted, padding:"7px 16px", cursor:"pointer",
+      }}>Preview with demo data</button>
+    </div>
+  );
+}
+
+/* ── ReportView ──────────────────────────────────────────────────────── */
+function ReportView({ report, onClear }) {
+  const [expandedQ, setExpandedQ] = useState(null);
+  const ori   = report.overall_readiness;
+  const color = READINESS_COLOR[ori.label] || C.engagement;
+
+  const toggleQ = i => setExpandedQ(v => v === i ? null : i);
+
+  return (
+    <>
+      {report._is_mock && (
+        <div style={{
+          margin:"16px 0 0", padding:"8px 14px",
+          background:"#181008", border:`1px solid #3a2a10`,
+          borderRadius:6, fontFamily:"monospace", fontSize:11,
+          color:C.confusion, letterSpacing:"0.06em",
+        }}>⚠ Demo data — run a real session to see live results</div>
+      )}
+
+      {/* ── Hero: overall readiness ── */}
+      <div style={{
+        padding:"48px 0 40px",
+        display:"grid", gridTemplateColumns:"auto 1fr",
+        gap:"0 48px", alignItems:"center",
+        borderBottom:`1px solid ${C.border}`,
+      }}>
+        <ReadinessRing score={ori.average} label={ori.label} />
+        <div>
+          <div style={{ fontFamily:"monospace", fontSize:10, letterSpacing:"0.16em", textTransform:"uppercase", color:C.muted, marginBottom:8 }}>
+            Overall Interview Readiness
+          </div>
+          <div style={{ fontSize:30, fontWeight:700, letterSpacing:"-0.02em", lineHeight:1.1, color, marginBottom:18 }}>
+            {ori.label}
+          </div>
+          <div style={{ display:"flex", gap:10, flexWrap:"wrap", marginBottom:22 }}>
+            <Pill>📋 {report.total_questions} questions</Pill>
+            <Pill>⏱ {report.total_duration}</Pill>
+            <Pill color={TREND_COLOR(ori.trend)}>trend {ori.trend}</Pill>
+            <Pill>best Q{ori.best_q} · worst Q{ori.worst_q}</Pill>
+          </div>
+          <button onClick={onClear} style={{
+            fontFamily:"monospace", fontSize:11, letterSpacing:"0.1em",
+            textTransform:"uppercase", background:"transparent",
+            border:`1px solid ${C.border}`, borderRadius:4,
+            color:C.muted, padding:"6px 14px", cursor:"pointer",
+          }}>↺ New interview</button>
+        </div>
+      </div>
+
+      {/* ── Per-question breakdown ── */}
+      <div style={{ marginTop:44 }}>
+        <SectionTitle>Per-Question Breakdown</SectionTitle>
+
+        {/* Column headers */}
+        <div style={{
+          display:"grid",
+          gridTemplateColumns:"40px 1fr repeat(4,80px) 90px",
+          padding:"0 20px 10px", gap:0,
+        }}>
+          <span />
+          <span style={{ fontFamily:"monospace", fontSize:9, color:C.muted, letterSpacing:"0.1em", textTransform:"uppercase" }}>Question</span>
+          {EMOTIONS.map(em => (
+            <span key={em} style={{ fontFamily:"monospace", fontSize:9, color:EM_META[em].color, letterSpacing:"0.08em", textTransform:"uppercase", textAlign:"center" }}>
+              {EM_META[em].name.slice(0,4)}
+            </span>
+          ))}
+          <span style={{ fontFamily:"monospace", fontSize:9, color:C.muted, letterSpacing:"0.1em", textTransform:"uppercase", textAlign:"right" }}>Score</span>
+        </div>
+
+        <div style={{ display:"flex", flexDirection:"column", gap:8 }}>
+          {report.questions.map((q, i) => (
+            <QuestionCard
+              key={i}
+              q={q}
+              expanded={expandedQ === i}
+              onToggle={() => toggleQ(i)}
+            />
+          ))}
+        </div>
+      </div>
+
+      {/* ── Overall emotion trends ── */}
+      <div style={{ marginTop:44 }}>
+        <SectionTitle>Overall Emotion Trends</SectionTitle>
+        <div style={{ display:"flex", flexDirection:"column", gap:10 }}>
+          {EMOTIONS.map(em => (
+            <OverallEmotionRow key={em} em={em} data={report.overall_emotions[em]} />
+          ))}
+        </div>
+      </div>
+
+      {/* ── Coaching notes ── */}
+      <div style={{ marginTop:44, marginBottom:60 }}>
+        <SectionTitle>Coaching Notes</SectionTitle>
+        <CoachingNotes report={report} />
+      </div>
+    </>
+  );
+}
+
+/* ── Root App ────────────────────────────────────────────────────────── */
+function App() {
+  const [phase,  setPhase]  = useState("waiting");
+  const [report, setReport] = useState(null);
+  const [error,  setError]  = useState(null);
+  const pollRef = useRef(null);
+
+  const stopPoll = () => { if (pollRef.current) { clearInterval(pollRef.current); pollRef.current = null; } };
+
+  const fetchReport = async () => {
+    const r2 = await fetch(`${API_BASE}/session/report?t=${Date.now()}`, { cache: "no-store" });
+    if (!r2.ok) throw new Error(`Report fetch failed: ${r2.status}`);
+    return r2.json();
+  };
+
+  const startPolling = useCallback(() => {
+    stopPoll();
+    pollRef.current = setInterval(async () => {
+      try {
+        const res  = await fetch(`${API_BASE}/session/status`, { cache: "no-store" });
+        if (!res.ok) throw new Error(`Server returned ${res.status}`);
+        const data = await res.json();
+        setError(null);
+        console.log("[demo] status poll:", data);
+
+        if (data.ready) {
+          stopPoll();
+          const loaded = await fetchReport();
+          console.log("[demo] report loaded:", loaded);
+          setReport(loaded);
+          setPhase("ready");
+        }
+      } catch (err) {
+        console.error("[demo] poll error:", err.message);
+        setError(err.message);
+      }
+    }, POLL_INTERVAL);
+  }, []);
+
+  useEffect(() => { startPolling(); return stopPoll; }, [startPolling]);
+
+  const handleClear = async () => {
+    try { await fetch(`${API_BASE}/session/clear`, { method:"POST" }); } catch (_) {}
+    setReport(null); setError(null); setPhase("waiting");
+    startPolling();
+  };
+
+  const useMock = () => { stopPoll(); setReport(MOCK); setPhase("ready"); };
+
+  return (
+    <div style={{ background:C.bg, color:C.text, minHeight:"100vh", fontFamily:"'Inter', system-ui, sans-serif", fontSize:14, lineHeight:1.6 }}>
+
+      {/* Header */}
+      <div style={{ borderBottom:`1px solid ${C.border}`, padding:"20px 40px", display:"flex", alignItems:"center", justifyContent:"space-between" }}>
+        <div style={{ display:"flex", alignItems:"center", gap:12 }}>
+          <div style={{
+            width:8, height:8, borderRadius:"50%",
+            background: phase === "ready" ? C.confidence : C.muted,
+            boxShadow:  phase === "ready" ? `0 0 8px ${C.confidence}` : "none",
+            animation:  phase === "waiting" ? "pulse 2s ease-in-out infinite" : "none",
+          }} />
+          <span style={{ fontFamily:"monospace", fontSize:11, letterSpacing:"0.14em", textTransform:"uppercase", color:C.muted }}>
+            AI Interview Room &nbsp;/&nbsp; Interview Report
+          </span>
+        </div>
+        {phase === "ready" && report && !report._is_mock && (
+          <span style={{ fontFamily:"monospace", fontSize:11, color:C.muted }}>
+            {report.total_questions} questions &nbsp;·&nbsp; {report.total_duration}
+          </span>
+        )}
+        {phase === "waiting" && (
+          <span style={{ fontFamily:"monospace", fontSize:11, color:C.muted, animation:"pulse 2s ease-in-out infinite" }}>
+            waiting for interview
+          </span>
+        )}
+      </div>
+
+      {/* Body */}
+      <div style={{ maxWidth:960, margin:"0 auto", padding:"0 40px" }}>
+        {phase === "ready" && report
+          ? <ReportView report={report} onClear={handleClear} />
+          : <WaitingScreen error={error} onUseMock={useMock} />
+        }
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+</script>
+</body>
+</html>

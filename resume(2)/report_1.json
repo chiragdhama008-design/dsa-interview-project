@@ -1,0 +1,3519 @@
+{
+  "duration_seconds": 24.9,
+  "frames_recorded": 496,
+  "emotions": {
+    "discomfort": {
+      "average": 22.4,
+      "peak": 30.0,
+      "floor": 11.0,
+      "weighted": 24.3,
+      "label": "Very Low"
+    },
+    "confidence": {
+      "average": 53.8,
+      "peak": 59.0,
+      "floor": 48.0,
+      "weighted": 52.3,
+      "label": "Moderate"
+    },
+    "confusion": {
+      "average": 10.1,
+      "peak": 30.0,
+      "floor": 0.0,
+      "weighted": 13.6,
+      "label": "Clear"
+    },
+    "engagement": {
+      "average": 69.6,
+      "peak": 85.0,
+      "floor": 56.0,
+      "weighted": 67.7,
+      "label": "Good"
+    }
+  },
+  "stability_score": 92.8,
+  "interview_readiness": {
+    "score": 66.2,
+    "label": "Adequate"
+  },
+  "timeline": [
+    {
+      "t": 7.41,
+      "discomfort": 11,
+      "confidence": 53,
+      "confusion": 2,
+      "engagement": 56
+    },
+    {
+      "t": 7.44,
+      "discomfort": 17,
+      "confidence": 55,
+      "confusion": 3,
+      "engagement": 60
+    },
+    {
+      "t": 7.46,
+      "discomfort": 21,
+      "confidence": 55,
+      "confusion": 4,
+      "engagement": 63
+    },
+    {
+      "t": 7.51,
+      "discomfort": 22,
+      "confidence": 56,
+      "confusion": 5,
+      "engagement": 65
+    },
+    {
+      "t": 7.53,
+      "discomfort": 22,
+      "confidence": 57,
+      "confusion": 5,
+      "engagement": 66
+    },
+    {
+      "t": 7.56,
+      "discomfort": 22,
+      "confidence": 58,
+      "confusion": 6,
+      "engagement": 67
+    },
+    {
+      "t": 7.61,
+      "discomfort": 23,
+      "confidence": 58,
+      "confusion": 6,
+      "engagement": 68
+    },
+    {
+      "t": 7.62,
+      "discomfort": 22,
+      "confidence": 58,
+      "confusion": 6,
+      "engagement": 69
+    },
+    {
+      "t": 7.65,
+      "discomfort": 22,
+      "confidence": 59,
+      "confusion": 6,
+      "engagement": 69
+    },
+    {
+      "t": 7.72,
+      "discomfort": 22,
+      "confidence": 59,
+      "confusion": 6,
+      "engagement": 69
+    },
+    {
+      "t": 7.73,
+      "discomfort": 22,
+      "confidence": 58,
+      "confusion": 6,
+      "engagement": 69
+    },
+    {
+      "t": 7.77,
+      "discomfort": 22,
+      "confidence": 58,
+      "confusion": 6,
+      "engagement": 69
+    },
+    {
+      "t": 7.78,
+      "discomfort": 22,
+      "confidence": 58,
+      "confusion": 6,
+      "engagement": 68
+    },
+    {
+      "t": 7.81,
+      "discomfort": 22,
+      "confidence": 57,
+      "confusion": 6,
+      "engagement": 68
+    },
+    {
+      "t": 7.86,
+      "discomfort": 23,
+      "confidence": 57,
+      "confusion": 5,
+      "engagement": 68
+    },
+    {
+      "t": 7.91,
+      "discomfort": 23,
+      "confidence": 57,
+      "confusion": 5,
+      "engagement": 67
+    },
+    {
+      "t": 7.92,
+      "discomfort": 23,
+      "confidence": 57,
+      "confusion": 5,
+      "engagement": 67
+    },
+    {
+      "t": 7.96,
+      "discomfort": 24,
+      "confidence": 57,
+      "confusion": 4,
+      "engagement": 66
+    },
+    {
+      "t": 8.01,
+      "discomfort": 25,
+      "confidence": 56,
+      "confusion": 4,
+      "engagement": 66
+    },
+    {
+      "t": 8.03,
+      "discomfort": 25,
+      "confidence": 56,
+      "confusion": 4,
+      "engagement": 65
+    },
+    {
+      "t": 8.07,
+      "discomfort": 25,
+      "confidence": 56,
+      "confusion": 4,
+      "engagement": 65
+    },
+    {
+      "t": 8.09,
+      "discomfort": 26,
+      "confidence": 56,
+      "confusion": 4,
+      "engagement": 65
+    },
+    {
+      "t": 8.12,
+      "discomfort": 26,
+      "confidence": 56,
+      "confusion": 4,
+      "engagement": 65
+    },
+    {
+      "t": 8.17,
+      "discomfort": 26,
+      "confidence": 56,
+      "confusion": 4,
+      "engagement": 65
+    },
+    {
+      "t": 8.18,
+      "discomfort": 26,
+      "confidence": 56,
+      "confusion": 4,
+      "engagement": 65
+    },
+    {
+      "t": 8.22,
+      "discomfort": 26,
+      "confidence": 56,
+      "confusion": 4,
+      "engagement": 65
+    },
+    {
+      "t": 8.26,
+      "discomfort": 26,
+      "confidence": 56,
+      "confusion": 4,
+      "engagement": 65
+    },
+    {
+      "t": 8.31,
+      "discomfort": 26,
+      "confidence": 56,
+      "confusion": 4,
+      "engagement": 65
+    },
+    {
+      "t": 8.32,
+      "discomfort": 26,
+      "confidence": 56,
+      "confusion": 4,
+      "engagement": 65
+    },
+    {
+      "t": 8.38,
+      "discomfort": 26,
+      "confidence": 56,
+      "confusion": 4,
+      "engagement": 65
+    },
+    {
+      "t": 8.38,
+      "discomfort": 26,
+      "confidence": 56,
+      "confusion": 3,
+      "engagement": 64
+    },
+    {
+      "t": 8.42,
+      "discomfort": 26,
+      "confidence": 56,
+      "confusion": 3,
+      "engagement": 64
+    },
+    {
+      "t": 8.47,
+      "discomfort": 26,
+      "confidence": 56,
+      "confusion": 2,
+      "engagement": 64
+    },
+    {
+      "t": 8.48,
+      "discomfort": 26,
+      "confidence": 56,
+      "confusion": 1,
+      "engagement": 64
+    },
+    {
+      "t": 8.52,
+      "discomfort": 27,
+      "confidence": 56,
+      "confusion": 0,
+      "engagement": 65
+    },
+    {
+      "t": 8.57,
+      "discomfort": 27,
+      "confidence": 56,
+      "confusion": 0,
+      "engagement": 66
+    },
+    {
+      "t": 8.59,
+      "discomfort": 27,
+      "confidence": 55,
+      "confusion": 0,
+      "engagement": 66
+    },
+    {
+      "t": 8.61,
+      "discomfort": 27,
+      "confidence": 55,
+      "confusion": 0,
+      "engagement": 66
+    },
+    {
+      "t": 8.66,
+      "discomfort": 27,
+      "confidence": 55,
+      "confusion": 0,
+      "engagement": 66
+    },
+    {
+      "t": 8.73,
+      "discomfort": 27,
+      "confidence": 55,
+      "confusion": 0,
+      "engagement": 66
+    },
+    {
+      "t": 8.74,
+      "discomfort": 26,
+      "confidence": 54,
+      "confusion": 0,
+      "engagement": 66
+    },
+    {
+      "t": 8.78,
+      "discomfort": 25,
+      "confidence": 54,
+      "confusion": 0,
+      "engagement": 66
+    },
+    {
+      "t": 8.79,
+      "discomfort": 24,
+      "confidence": 55,
+      "confusion": 0,
+      "engagement": 66
+    },
+    {
+      "t": 8.82,
+      "discomfort": 23,
+      "confidence": 55,
+      "confusion": 2,
+      "engagement": 66
+    },
+    {
+      "t": 8.87,
+      "discomfort": 22,
+      "confidence": 55,
+      "confusion": 3,
+      "engagement": 66
+    },
+    {
+      "t": 8.88,
+      "discomfort": 21,
+      "confidence": 55,
+      "confusion": 4,
+      "engagement": 66
+    },
+    {
+      "t": 8.92,
+      "discomfort": 21,
+      "confidence": 55,
+      "confusion": 5,
+      "engagement": 67
+    },
+    {
+      "t": 8.97,
+      "discomfort": 21,
+      "confidence": 54,
+      "confusion": 6,
+      "engagement": 69
+    },
+    {
+      "t": 8.98,
+      "discomfort": 21,
+      "confidence": 53,
+      "confusion": 7,
+      "engagement": 70
+    },
+    {
+      "t": 9.03,
+      "discomfort": 21,
+      "confidence": 52,
+      "confusion": 8,
+      "engagement": 71
+    },
+    {
+      "t": 9.04,
+      "discomfort": 21,
+      "confidence": 52,
+      "confusion": 8,
+      "engagement": 71
+    },
+    {
+      "t": 9.08,
+      "discomfort": 21,
+      "confidence": 51,
+      "confusion": 9,
+      "engagement": 71
+    },
+    {
+      "t": 9.12,
+      "discomfort": 21,
+      "confidence": 51,
+      "confusion": 9,
+      "engagement": 71
+    },
+    {
+      "t": 9.18,
+      "discomfort": 21,
+      "confidence": 51,
+      "confusion": 10,
+      "engagement": 70
+    },
+    {
+      "t": 9.2,
+      "discomfort": 21,
+      "confidence": 50,
+      "confusion": 10,
+      "engagement": 68
+    },
+    {
+      "t": 9.22,
+      "discomfort": 21,
+      "confidence": 50,
+      "confusion": 10,
+      "engagement": 67
+    },
+    {
+      "t": 9.27,
+      "discomfort": 21,
+      "confidence": 50,
+      "confusion": 10,
+      "engagement": 67
+    },
+    {
+      "t": 9.29,
+      "discomfort": 21,
+      "confidence": 50,
+      "confusion": 10,
+      "engagement": 67
+    },
+    {
+      "t": 9.32,
+      "discomfort": 22,
+      "confidence": 50,
+      "confusion": 9,
+      "engagement": 67
+    },
+    {
+      "t": 9.38,
+      "discomfort": 22,
+      "confidence": 50,
+      "confusion": 10,
+      "engagement": 66
+    },
+    {
+      "t": 9.4,
+      "discomfort": 22,
+      "confidence": 50,
+      "confusion": 10,
+      "engagement": 66
+    },
+    {
+      "t": 9.43,
+      "discomfort": 22,
+      "confidence": 50,
+      "confusion": 11,
+      "engagement": 66
+    },
+    {
+      "t": 9.44,
+      "discomfort": 22,
+      "confidence": 50,
+      "confusion": 11,
+      "engagement": 66
+    },
+    {
+      "t": 9.48,
+      "discomfort": 22,
+      "confidence": 50,
+      "confusion": 11,
+      "engagement": 66
+    },
+    {
+      "t": 9.53,
+      "discomfort": 22,
+      "confidence": 50,
+      "confusion": 11,
+      "engagement": 66
+    },
+    {
+      "t": 9.58,
+      "discomfort": 23,
+      "confidence": 50,
+      "confusion": 10,
+      "engagement": 66
+    },
+    {
+      "t": 9.58,
+      "discomfort": 23,
+      "confidence": 50,
+      "confusion": 8,
+      "engagement": 67
+    },
+    {
+      "t": 9.62,
+      "discomfort": 23,
+      "confidence": 50,
+      "confusion": 7,
+      "engagement": 68
+    },
+    {
+      "t": 9.69,
+      "discomfort": 24,
+      "confidence": 50,
+      "confusion": 7,
+      "engagement": 68
+    },
+    {
+      "t": 9.69,
+      "discomfort": 24,
+      "confidence": 50,
+      "confusion": 8,
+      "engagement": 68
+    },
+    {
+      "t": 9.73,
+      "discomfort": 24,
+      "confidence": 50,
+      "confusion": 9,
+      "engagement": 68
+    },
+    {
+      "t": 9.74,
+      "discomfort": 24,
+      "confidence": 50,
+      "confusion": 10,
+      "engagement": 67
+    },
+    {
+      "t": 9.78,
+      "discomfort": 24,
+      "confidence": 49,
+      "confusion": 9,
+      "engagement": 67
+    },
+    {
+      "t": 9.83,
+      "discomfort": 23,
+      "confidence": 51,
+      "confusion": 8,
+      "engagement": 67
+    },
+    {
+      "t": 9.85,
+      "discomfort": 22,
+      "confidence": 53,
+      "confusion": 7,
+      "engagement": 67
+    },
+    {
+      "t": 9.88,
+      "discomfort": 22,
+      "confidence": 53,
+      "confusion": 7,
+      "engagement": 67
+    },
+    {
+      "t": 9.93,
+      "discomfort": 21,
+      "confidence": 54,
+      "confusion": 7,
+      "engagement": 66
+    },
+    {
+      "t": 9.98,
+      "discomfort": 20,
+      "confidence": 54,
+      "confusion": 7,
+      "engagement": 65
+    },
+    {
+      "t": 9.99,
+      "discomfort": 18,
+      "confidence": 53,
+      "confusion": 10,
+      "engagement": 64
+    },
+    {
+      "t": 10.04,
+      "discomfort": 17,
+      "confidence": 53,
+      "confusion": 12,
+      "engagement": 63
+    },
+    {
+      "t": 10.05,
+      "discomfort": 17,
+      "confidence": 53,
+      "confusion": 15,
+      "engagement": 63
+    },
+    {
+      "t": 10.09,
+      "discomfort": 17,
+      "confidence": 53,
+      "confusion": 16,
+      "engagement": 63
+    },
+    {
+      "t": 10.14,
+      "discomfort": 17,
+      "confidence": 53,
+      "confusion": 17,
+      "engagement": 63
+    },
+    {
+      "t": 10.15,
+      "discomfort": 17,
+      "confidence": 53,
+      "confusion": 18,
+      "engagement": 62
+    },
+    {
+      "t": 10.18,
+      "discomfort": 17,
+      "confidence": 53,
+      "confusion": 19,
+      "engagement": 62
+    },
+    {
+      "t": 10.23,
+      "discomfort": 17,
+      "confidence": 53,
+      "confusion": 18,
+      "engagement": 62
+    },
+    {
+      "t": 10.24,
+      "discomfort": 17,
+      "confidence": 53,
+      "confusion": 16,
+      "engagement": 62
+    },
+    {
+      "t": 10.28,
+      "discomfort": 17,
+      "confidence": 53,
+      "confusion": 15,
+      "engagement": 62
+    },
+    {
+      "t": 10.34,
+      "discomfort": 17,
+      "confidence": 53,
+      "confusion": 14,
+      "engagement": 62
+    },
+    {
+      "t": 10.35,
+      "discomfort": 17,
+      "confidence": 53,
+      "confusion": 13,
+      "engagement": 62
+    },
+    {
+      "t": 10.39,
+      "discomfort": 17,
+      "confidence": 53,
+      "confusion": 12,
+      "engagement": 62
+    },
+    {
+      "t": 10.44,
+      "discomfort": 17,
+      "confidence": 53,
+      "confusion": 12,
+      "engagement": 63
+    },
+    {
+      "t": 10.46,
+      "discomfort": 17,
+      "confidence": 53,
+      "confusion": 12,
+      "engagement": 63
+    },
+    {
+      "t": 10.49,
+      "discomfort": 17,
+      "confidence": 53,
+      "confusion": 12,
+      "engagement": 63
+    },
+    {
+      "t": 10.53,
+      "discomfort": 17,
+      "confidence": 53,
+      "confusion": 12,
+      "engagement": 63
+    },
+    {
+      "t": 10.55,
+      "discomfort": 17,
+      "confidence": 53,
+      "confusion": 13,
+      "engagement": 63
+    },
+    {
+      "t": 10.58,
+      "discomfort": 18,
+      "confidence": 53,
+      "confusion": 14,
+      "engagement": 63
+    },
+    {
+      "t": 10.63,
+      "discomfort": 19,
+      "confidence": 53,
+      "confusion": 15,
+      "engagement": 63
+    },
+    {
+      "t": 10.64,
+      "discomfort": 20,
+      "confidence": 53,
+      "confusion": 16,
+      "engagement": 64
+    },
+    {
+      "t": 10.69,
+      "discomfort": 20,
+      "confidence": 53,
+      "confusion": 15,
+      "engagement": 64
+    },
+    {
+      "t": 10.74,
+      "discomfort": 20,
+      "confidence": 53,
+      "confusion": 14,
+      "engagement": 64
+    },
+    {
+      "t": 10.76,
+      "discomfort": 19,
+      "confidence": 53,
+      "confusion": 15,
+      "engagement": 64
+    },
+    {
+      "t": 10.79,
+      "discomfort": 19,
+      "confidence": 54,
+      "confusion": 16,
+      "engagement": 64
+    },
+    {
+      "t": 10.84,
+      "discomfort": 19,
+      "confidence": 54,
+      "confusion": 17,
+      "engagement": 64
+    },
+    {
+      "t": 10.85,
+      "discomfort": 19,
+      "confidence": 54,
+      "confusion": 16,
+      "engagement": 65
+    },
+    {
+      "t": 10.89,
+      "discomfort": 19,
+      "confidence": 55,
+      "confusion": 15,
+      "engagement": 66
+    },
+    {
+      "t": 10.93,
+      "discomfort": 19,
+      "confidence": 55,
+      "confusion": 14,
+      "engagement": 67
+    },
+    {
+      "t": 10.95,
+      "discomfort": 18,
+      "confidence": 56,
+      "confusion": 15,
+      "engagement": 68
+    },
+    {
+      "t": 11.0,
+      "discomfort": 18,
+      "confidence": 56,
+      "confusion": 15,
+      "engagement": 69
+    },
+    {
+      "t": 11.0,
+      "discomfort": 18,
+      "confidence": 56,
+      "confusion": 15,
+      "engagement": 70
+    },
+    {
+      "t": 11.05,
+      "discomfort": 18,
+      "confidence": 56,
+      "confusion": 15,
+      "engagement": 70
+    },
+    {
+      "t": 11.09,
+      "discomfort": 18,
+      "confidence": 57,
+      "confusion": 15,
+      "engagement": 71
+    },
+    {
+      "t": 11.14,
+      "discomfort": 19,
+      "confidence": 57,
+      "confusion": 15,
+      "engagement": 72
+    },
+    {
+      "t": 11.16,
+      "discomfort": 19,
+      "confidence": 57,
+      "confusion": 15,
+      "engagement": 73
+    },
+    {
+      "t": 11.19,
+      "discomfort": 19,
+      "confidence": 57,
+      "confusion": 15,
+      "engagement": 73
+    },
+    {
+      "t": 11.24,
+      "discomfort": 19,
+      "confidence": 57,
+      "confusion": 15,
+      "engagement": 74
+    },
+    {
+      "t": 11.25,
+      "discomfort": 19,
+      "confidence": 57,
+      "confusion": 16,
+      "engagement": 74
+    },
+    {
+      "t": 11.29,
+      "discomfort": 19,
+      "confidence": 57,
+      "confusion": 16,
+      "engagement": 74
+    },
+    {
+      "t": 11.35,
+      "discomfort": 18,
+      "confidence": 57,
+      "confusion": 15,
+      "engagement": 75
+    },
+    {
+      "t": 11.36,
+      "discomfort": 19,
+      "confidence": 57,
+      "confusion": 15,
+      "engagement": 74
+    },
+    {
+      "t": 11.4,
+      "discomfort": 18,
+      "confidence": 57,
+      "confusion": 14,
+      "engagement": 74
+    },
+    {
+      "t": 11.41,
+      "discomfort": 18,
+      "confidence": 57,
+      "confusion": 14,
+      "engagement": 74
+    },
+    {
+      "t": 11.45,
+      "discomfort": 18,
+      "confidence": 57,
+      "confusion": 14,
+      "engagement": 74
+    },
+    {
+      "t": 11.49,
+      "discomfort": 18,
+      "confidence": 58,
+      "confusion": 13,
+      "engagement": 74
+    },
+    {
+      "t": 11.54,
+      "discomfort": 18,
+      "confidence": 58,
+      "confusion": 14,
+      "engagement": 74
+    },
+    {
+      "t": 11.55,
+      "discomfort": 20,
+      "confidence": 56,
+      "confusion": 16,
+      "engagement": 74
+    },
+    {
+      "t": 11.59,
+      "discomfort": 20,
+      "confidence": 54,
+      "confusion": 18,
+      "engagement": 74
+    },
+    {
+      "t": 11.65,
+      "discomfort": 21,
+      "confidence": 53,
+      "confusion": 17,
+      "engagement": 74
+    },
+    {
+      "t": 11.68,
+      "discomfort": 21,
+      "confidence": 53,
+      "confusion": 17,
+      "engagement": 74
+    },
+    {
+      "t": 11.7,
+      "discomfort": 21,
+      "confidence": 52,
+      "confusion": 17,
+      "engagement": 74
+    },
+    {
+      "t": 11.72,
+      "discomfort": 21,
+      "confidence": 52,
+      "confusion": 16,
+      "engagement": 74
+    },
+    {
+      "t": 11.75,
+      "discomfort": 21,
+      "confidence": 52,
+      "confusion": 15,
+      "engagement": 74
+    },
+    {
+      "t": 11.8,
+      "discomfort": 21,
+      "confidence": 52,
+      "confusion": 15,
+      "engagement": 74
+    },
+    {
+      "t": 11.82,
+      "discomfort": 21,
+      "confidence": 52,
+      "confusion": 16,
+      "engagement": 73
+    },
+    {
+      "t": 11.85,
+      "discomfort": 21,
+      "confidence": 52,
+      "confusion": 17,
+      "engagement": 73
+    },
+    {
+      "t": 11.89,
+      "discomfort": 21,
+      "confidence": 51,
+      "confusion": 18,
+      "engagement": 72
+    },
+    {
+      "t": 11.94,
+      "discomfort": 22,
+      "confidence": 51,
+      "confusion": 18,
+      "engagement": 70
+    },
+    {
+      "t": 11.95,
+      "discomfort": 23,
+      "confidence": 50,
+      "confusion": 18,
+      "engagement": 68
+    },
+    {
+      "t": 12.01,
+      "discomfort": 24,
+      "confidence": 50,
+      "confusion": 18,
+      "engagement": 66
+    },
+    {
+      "t": 12.02,
+      "discomfort": 24,
+      "confidence": 50,
+      "confusion": 16,
+      "engagement": 65
+    },
+    {
+      "t": 12.05,
+      "discomfort": 24,
+      "confidence": 50,
+      "confusion": 15,
+      "engagement": 65
+    },
+    {
+      "t": 12.1,
+      "discomfort": 24,
+      "confidence": 49,
+      "confusion": 13,
+      "engagement": 64
+    },
+    {
+      "t": 12.11,
+      "discomfort": 25,
+      "confidence": 49,
+      "confusion": 13,
+      "engagement": 65
+    },
+    {
+      "t": 12.15,
+      "discomfort": 25,
+      "confidence": 49,
+      "confusion": 13,
+      "engagement": 65
+    },
+    {
+      "t": 12.2,
+      "discomfort": 26,
+      "confidence": 49,
+      "confusion": 14,
+      "engagement": 65
+    },
+    {
+      "t": 12.21,
+      "discomfort": 26,
+      "confidence": 49,
+      "confusion": 14,
+      "engagement": 66
+    },
+    {
+      "t": 12.25,
+      "discomfort": 26,
+      "confidence": 49,
+      "confusion": 15,
+      "engagement": 65
+    },
+    {
+      "t": 12.31,
+      "discomfort": 25,
+      "confidence": 49,
+      "confusion": 15,
+      "engagement": 66
+    },
+    {
+      "t": 12.32,
+      "discomfort": 25,
+      "confidence": 50,
+      "confusion": 16,
+      "engagement": 67
+    },
+    {
+      "t": 12.36,
+      "discomfort": 25,
+      "confidence": 50,
+      "confusion": 16,
+      "engagement": 67
+    },
+    {
+      "t": 12.41,
+      "discomfort": 26,
+      "confidence": 49,
+      "confusion": 16,
+      "engagement": 67
+    },
+    {
+      "t": 12.42,
+      "discomfort": 26,
+      "confidence": 49,
+      "confusion": 16,
+      "engagement": 67
+    },
+    {
+      "t": 12.45,
+      "discomfort": 25,
+      "confidence": 49,
+      "confusion": 16,
+      "engagement": 66
+    },
+    {
+      "t": 12.5,
+      "discomfort": 26,
+      "confidence": 49,
+      "confusion": 15,
+      "engagement": 67
+    },
+    {
+      "t": 12.52,
+      "discomfort": 26,
+      "confidence": 50,
+      "confusion": 15,
+      "engagement": 68
+    },
+    {
+      "t": 12.55,
+      "discomfort": 26,
+      "confidence": 50,
+      "confusion": 16,
+      "engagement": 68
+    },
+    {
+      "t": 12.6,
+      "discomfort": 26,
+      "confidence": 50,
+      "confusion": 16,
+      "engagement": 68
+    },
+    {
+      "t": 12.62,
+      "discomfort": 26,
+      "confidence": 50,
+      "confusion": 16,
+      "engagement": 68
+    },
+    {
+      "t": 12.66,
+      "discomfort": 26,
+      "confidence": 50,
+      "confusion": 16,
+      "engagement": 68
+    },
+    {
+      "t": 12.71,
+      "discomfort": 26,
+      "confidence": 50,
+      "confusion": 16,
+      "engagement": 67
+    },
+    {
+      "t": 12.72,
+      "discomfort": 24,
+      "confidence": 51,
+      "confusion": 16,
+      "engagement": 67
+    },
+    {
+      "t": 12.76,
+      "discomfort": 23,
+      "confidence": 53,
+      "confusion": 16,
+      "engagement": 66
+    },
+    {
+      "t": 12.8,
+      "discomfort": 23,
+      "confidence": 54,
+      "confusion": 16,
+      "engagement": 66
+    },
+    {
+      "t": 12.82,
+      "discomfort": 23,
+      "confidence": 54,
+      "confusion": 15,
+      "engagement": 66
+    },
+    {
+      "t": 12.85,
+      "discomfort": 23,
+      "confidence": 54,
+      "confusion": 14,
+      "engagement": 66
+    },
+    {
+      "t": 12.9,
+      "discomfort": 23,
+      "confidence": 55,
+      "confusion": 14,
+      "engagement": 66
+    },
+    {
+      "t": 12.92,
+      "discomfort": 25,
+      "confidence": 55,
+      "confusion": 9,
+      "engagement": 65
+    },
+    {
+      "t": 12.97,
+      "discomfort": 28,
+      "confidence": 53,
+      "confusion": 5,
+      "engagement": 66
+    },
+    {
+      "t": 12.98,
+      "discomfort": 29,
+      "confidence": 52,
+      "confusion": 3,
+      "engagement": 67
+    },
+    {
+      "t": 13.01,
+      "discomfort": 30,
+      "confidence": 51,
+      "confusion": 2,
+      "engagement": 67
+    },
+    {
+      "t": 13.06,
+      "discomfort": 29,
+      "confidence": 50,
+      "confusion": 1,
+      "engagement": 67
+    },
+    {
+      "t": 13.11,
+      "discomfort": 29,
+      "confidence": 50,
+      "confusion": 1,
+      "engagement": 67
+    },
+    {
+      "t": 13.12,
+      "discomfort": 28,
+      "confidence": 50,
+      "confusion": 0,
+      "engagement": 67
+    },
+    {
+      "t": 13.16,
+      "discomfort": 28,
+      "confidence": 49,
+      "confusion": 1,
+      "engagement": 67
+    },
+    {
+      "t": 13.21,
+      "discomfort": 29,
+      "confidence": 49,
+      "confusion": 1,
+      "engagement": 67
+    },
+    {
+      "t": 13.22,
+      "discomfort": 28,
+      "confidence": 49,
+      "confusion": 0,
+      "engagement": 66
+    },
+    {
+      "t": 13.25,
+      "discomfort": 28,
+      "confidence": 49,
+      "confusion": 0,
+      "engagement": 66
+    },
+    {
+      "t": 13.32,
+      "discomfort": 27,
+      "confidence": 49,
+      "confusion": 1,
+      "engagement": 66
+    },
+    {
+      "t": 13.33,
+      "discomfort": 28,
+      "confidence": 49,
+      "confusion": 1,
+      "engagement": 66
+    },
+    {
+      "t": 13.37,
+      "discomfort": 27,
+      "confidence": 49,
+      "confusion": 0,
+      "engagement": 65
+    },
+    {
+      "t": 13.38,
+      "discomfort": 28,
+      "confidence": 49,
+      "confusion": 0,
+      "engagement": 65
+    },
+    {
+      "t": 13.41,
+      "discomfort": 28,
+      "confidence": 48,
+      "confusion": 0,
+      "engagement": 65
+    },
+    {
+      "t": 13.46,
+      "discomfort": 28,
+      "confidence": 48,
+      "confusion": 0,
+      "engagement": 64
+    },
+    {
+      "t": 13.51,
+      "discomfort": 28,
+      "confidence": 48,
+      "confusion": 0,
+      "engagement": 64
+    },
+    {
+      "t": 13.52,
+      "discomfort": 29,
+      "confidence": 48,
+      "confusion": 0,
+      "engagement": 64
+    },
+    {
+      "t": 13.56,
+      "discomfort": 29,
+      "confidence": 48,
+      "confusion": 0,
+      "engagement": 64
+    },
+    {
+      "t": 13.62,
+      "discomfort": 28,
+      "confidence": 48,
+      "confusion": 0,
+      "engagement": 64
+    },
+    {
+      "t": 13.63,
+      "discomfort": 29,
+      "confidence": 49,
+      "confusion": 0,
+      "engagement": 64
+    },
+    {
+      "t": 13.67,
+      "discomfort": 29,
+      "confidence": 49,
+      "confusion": 0,
+      "engagement": 64
+    },
+    {
+      "t": 13.68,
+      "discomfort": 28,
+      "confidence": 49,
+      "confusion": 0,
+      "engagement": 65
+    },
+    {
+      "t": 13.72,
+      "discomfort": 28,
+      "confidence": 49,
+      "confusion": 0,
+      "engagement": 65
+    },
+    {
+      "t": 13.77,
+      "discomfort": 28,
+      "confidence": 49,
+      "confusion": 0,
+      "engagement": 65
+    },
+    {
+      "t": 13.78,
+      "discomfort": 27,
+      "confidence": 49,
+      "confusion": 2,
+      "engagement": 65
+    },
+    {
+      "t": 13.81,
+      "discomfort": 25,
+      "confidence": 50,
+      "confusion": 3,
+      "engagement": 65
+    },
+    {
+      "t": 13.86,
+      "discomfort": 24,
+      "confidence": 52,
+      "confusion": 5,
+      "engagement": 66
+    },
+    {
+      "t": 13.91,
+      "discomfort": 24,
+      "confidence": 52,
+      "confusion": 6,
+      "engagement": 65
+    },
+    {
+      "t": 13.93,
+      "discomfort": 24,
+      "confidence": 53,
+      "confusion": 7,
+      "engagement": 65
+    },
+    {
+      "t": 13.97,
+      "discomfort": 23,
+      "confidence": 53,
+      "confusion": 7,
+      "engagement": 64
+    },
+    {
+      "t": 13.98,
+      "discomfort": 24,
+      "confidence": 53,
+      "confusion": 8,
+      "engagement": 63
+    },
+    {
+      "t": 14.02,
+      "discomfort": 23,
+      "confidence": 53,
+      "confusion": 9,
+      "engagement": 63
+    },
+    {
+      "t": 14.07,
+      "discomfort": 24,
+      "confidence": 53,
+      "confusion": 9,
+      "engagement": 64
+    },
+    {
+      "t": 14.08,
+      "discomfort": 26,
+      "confidence": 52,
+      "confusion": 8,
+      "engagement": 65
+    },
+    {
+      "t": 14.12,
+      "discomfort": 27,
+      "confidence": 52,
+      "confusion": 7,
+      "engagement": 65
+    },
+    {
+      "t": 14.17,
+      "discomfort": 28,
+      "confidence": 51,
+      "confusion": 4,
+      "engagement": 65
+    },
+    {
+      "t": 14.18,
+      "discomfort": 27,
+      "confidence": 51,
+      "confusion": 5,
+      "engagement": 66
+    },
+    {
+      "t": 14.21,
+      "discomfort": 26,
+      "confidence": 51,
+      "confusion": 6,
+      "engagement": 66
+    },
+    {
+      "t": 14.28,
+      "discomfort": 26,
+      "confidence": 51,
+      "confusion": 7,
+      "engagement": 66
+    },
+    {
+      "t": 14.3,
+      "discomfort": 27,
+      "confidence": 51,
+      "confusion": 6,
+      "engagement": 67
+    },
+    {
+      "t": 14.33,
+      "discomfort": 27,
+      "confidence": 51,
+      "confusion": 5,
+      "engagement": 67
+    },
+    {
+      "t": 14.37,
+      "discomfort": 27,
+      "confidence": 51,
+      "confusion": 5,
+      "engagement": 67
+    },
+    {
+      "t": 14.38,
+      "discomfort": 28,
+      "confidence": 50,
+      "confusion": 5,
+      "engagement": 69
+    },
+    {
+      "t": 14.42,
+      "discomfort": 29,
+      "confidence": 50,
+      "confusion": 4,
+      "engagement": 71
+    },
+    {
+      "t": 14.47,
+      "discomfort": 29,
+      "confidence": 49,
+      "confusion": 5,
+      "engagement": 71
+    },
+    {
+      "t": 14.48,
+      "discomfort": 29,
+      "confidence": 49,
+      "confusion": 6,
+      "engagement": 72
+    },
+    {
+      "t": 14.52,
+      "discomfort": 29,
+      "confidence": 49,
+      "confusion": 6,
+      "engagement": 72
+    },
+    {
+      "t": 14.57,
+      "discomfort": 29,
+      "confidence": 49,
+      "confusion": 6,
+      "engagement": 72
+    },
+    {
+      "t": 14.58,
+      "discomfort": 30,
+      "confidence": 49,
+      "confusion": 6,
+      "engagement": 72
+    },
+    {
+      "t": 14.63,
+      "discomfort": 30,
+      "confidence": 48,
+      "confusion": 6,
+      "engagement": 73
+    },
+    {
+      "t": 14.65,
+      "discomfort": 29,
+      "confidence": 49,
+      "confusion": 6,
+      "engagement": 73
+    },
+    {
+      "t": 14.68,
+      "discomfort": 29,
+      "confidence": 49,
+      "confusion": 6,
+      "engagement": 73
+    },
+    {
+      "t": 14.72,
+      "discomfort": 29,
+      "confidence": 49,
+      "confusion": 3,
+      "engagement": 73
+    },
+    {
+      "t": 14.78,
+      "discomfort": 29,
+      "confidence": 49,
+      "confusion": 4,
+      "engagement": 73
+    },
+    {
+      "t": 14.78,
+      "discomfort": 27,
+      "confidence": 49,
+      "confusion": 7,
+      "engagement": 72
+    },
+    {
+      "t": 14.82,
+      "discomfort": 27,
+      "confidence": 49,
+      "confusion": 10,
+      "engagement": 72
+    },
+    {
+      "t": 14.87,
+      "discomfort": 27,
+      "confidence": 49,
+      "confusion": 11,
+      "engagement": 71
+    },
+    {
+      "t": 14.88,
+      "discomfort": 27,
+      "confidence": 49,
+      "confusion": 11,
+      "engagement": 70
+    },
+    {
+      "t": 14.94,
+      "discomfort": 27,
+      "confidence": 49,
+      "confusion": 12,
+      "engagement": 70
+    },
+    {
+      "t": 14.95,
+      "discomfort": 26,
+      "confidence": 50,
+      "confusion": 10,
+      "engagement": 69
+    },
+    {
+      "t": 14.98,
+      "discomfort": 26,
+      "confidence": 50,
+      "confusion": 10,
+      "engagement": 68
+    },
+    {
+      "t": 15.03,
+      "discomfort": 26,
+      "confidence": 50,
+      "confusion": 9,
+      "engagement": 68
+    },
+    {
+      "t": 15.05,
+      "discomfort": 26,
+      "confidence": 51,
+      "confusion": 9,
+      "engagement": 67
+    },
+    {
+      "t": 15.08,
+      "discomfort": 26,
+      "confidence": 51,
+      "confusion": 9,
+      "engagement": 67
+    },
+    {
+      "t": 15.12,
+      "discomfort": 26,
+      "confidence": 51,
+      "confusion": 9,
+      "engagement": 67
+    },
+    {
+      "t": 15.17,
+      "discomfort": 25,
+      "confidence": 51,
+      "confusion": 9,
+      "engagement": 67
+    },
+    {
+      "t": 15.18,
+      "discomfort": 24,
+      "confidence": 52,
+      "confusion": 9,
+      "engagement": 67
+    },
+    {
+      "t": 15.22,
+      "discomfort": 24,
+      "confidence": 52,
+      "confusion": 9,
+      "engagement": 67
+    },
+    {
+      "t": 15.29,
+      "discomfort": 24,
+      "confidence": 53,
+      "confusion": 9,
+      "engagement": 68
+    },
+    {
+      "t": 15.3,
+      "discomfort": 23,
+      "confidence": 53,
+      "confusion": 10,
+      "engagement": 67
+    },
+    {
+      "t": 15.33,
+      "discomfort": 23,
+      "confidence": 54,
+      "confusion": 10,
+      "engagement": 67
+    },
+    {
+      "t": 15.35,
+      "discomfort": 23,
+      "confidence": 54,
+      "confusion": 10,
+      "engagement": 67
+    },
+    {
+      "t": 15.38,
+      "discomfort": 22,
+      "confidence": 55,
+      "confusion": 9,
+      "engagement": 67
+    },
+    {
+      "t": 15.43,
+      "discomfort": 22,
+      "confidence": 55,
+      "confusion": 8,
+      "engagement": 65
+    },
+    {
+      "t": 15.45,
+      "discomfort": 23,
+      "confidence": 54,
+      "confusion": 7,
+      "engagement": 65
+    },
+    {
+      "t": 15.48,
+      "discomfort": 23,
+      "confidence": 54,
+      "confusion": 7,
+      "engagement": 65
+    },
+    {
+      "t": 15.53,
+      "discomfort": 23,
+      "confidence": 53,
+      "confusion": 8,
+      "engagement": 65
+    },
+    {
+      "t": 15.59,
+      "discomfort": 23,
+      "confidence": 53,
+      "confusion": 8,
+      "engagement": 65
+    },
+    {
+      "t": 15.6,
+      "discomfort": 24,
+      "confidence": 52,
+      "confusion": 7,
+      "engagement": 65
+    },
+    {
+      "t": 15.64,
+      "discomfort": 24,
+      "confidence": 52,
+      "confusion": 6,
+      "engagement": 65
+    },
+    {
+      "t": 15.65,
+      "discomfort": 24,
+      "confidence": 52,
+      "confusion": 6,
+      "engagement": 65
+    },
+    {
+      "t": 15.69,
+      "discomfort": 24,
+      "confidence": 52,
+      "confusion": 6,
+      "engagement": 65
+    },
+    {
+      "t": 15.73,
+      "discomfort": 25,
+      "confidence": 52,
+      "confusion": 5,
+      "engagement": 65
+    },
+    {
+      "t": 15.75,
+      "discomfort": 24,
+      "confidence": 52,
+      "confusion": 6,
+      "engagement": 65
+    },
+    {
+      "t": 15.78,
+      "discomfort": 24,
+      "confidence": 52,
+      "confusion": 7,
+      "engagement": 65
+    },
+    {
+      "t": 15.83,
+      "discomfort": 23,
+      "confidence": 52,
+      "confusion": 8,
+      "engagement": 65
+    },
+    {
+      "t": 15.85,
+      "discomfort": 23,
+      "confidence": 52,
+      "confusion": 8,
+      "engagement": 65
+    },
+    {
+      "t": 15.88,
+      "discomfort": 23,
+      "confidence": 52,
+      "confusion": 9,
+      "engagement": 64
+    },
+    {
+      "t": 15.94,
+      "discomfort": 23,
+      "confidence": 52,
+      "confusion": 10,
+      "engagement": 65
+    },
+    {
+      "t": 15.97,
+      "discomfort": 23,
+      "confidence": 52,
+      "confusion": 10,
+      "engagement": 67
+    },
+    {
+      "t": 15.99,
+      "discomfort": 23,
+      "confidence": 53,
+      "confusion": 11,
+      "engagement": 68
+    },
+    {
+      "t": 16.04,
+      "discomfort": 23,
+      "confidence": 53,
+      "confusion": 11,
+      "engagement": 68
+    },
+    {
+      "t": 16.05,
+      "discomfort": 23,
+      "confidence": 53,
+      "confusion": 11,
+      "engagement": 68
+    },
+    {
+      "t": 16.09,
+      "discomfort": 22,
+      "confidence": 53,
+      "confusion": 11,
+      "engagement": 68
+    },
+    {
+      "t": 16.13,
+      "discomfort": 23,
+      "confidence": 53,
+      "confusion": 10,
+      "engagement": 68
+    },
+    {
+      "t": 16.15,
+      "discomfort": 24,
+      "confidence": 52,
+      "confusion": 12,
+      "engagement": 69
+    },
+    {
+      "t": 16.18,
+      "discomfort": 25,
+      "confidence": 52,
+      "confusion": 14,
+      "engagement": 69
+    },
+    {
+      "t": 16.25,
+      "discomfort": 25,
+      "confidence": 52,
+      "confusion": 13,
+      "engagement": 69
+    },
+    {
+      "t": 16.26,
+      "discomfort": 25,
+      "confidence": 52,
+      "confusion": 13,
+      "engagement": 69
+    },
+    {
+      "t": 16.29,
+      "discomfort": 25,
+      "confidence": 52,
+      "confusion": 12,
+      "engagement": 69
+    },
+    {
+      "t": 16.34,
+      "discomfort": 25,
+      "confidence": 52,
+      "confusion": 11,
+      "engagement": 68
+    },
+    {
+      "t": 16.36,
+      "discomfort": 24,
+      "confidence": 52,
+      "confusion": 11,
+      "engagement": 68
+    },
+    {
+      "t": 16.39,
+      "discomfort": 24,
+      "confidence": 52,
+      "confusion": 11,
+      "engagement": 68
+    },
+    {
+      "t": 16.44,
+      "discomfort": 24,
+      "confidence": 53,
+      "confusion": 12,
+      "engagement": 69
+    },
+    {
+      "t": 16.45,
+      "discomfort": 24,
+      "confidence": 52,
+      "confusion": 13,
+      "engagement": 69
+    },
+    {
+      "t": 16.49,
+      "discomfort": 24,
+      "confidence": 52,
+      "confusion": 13,
+      "engagement": 68
+    },
+    {
+      "t": 16.53,
+      "discomfort": 24,
+      "confidence": 52,
+      "confusion": 12,
+      "engagement": 67
+    },
+    {
+      "t": 16.55,
+      "discomfort": 25,
+      "confidence": 52,
+      "confusion": 10,
+      "engagement": 66
+    },
+    {
+      "t": 16.6,
+      "discomfort": 25,
+      "confidence": 52,
+      "confusion": 8,
+      "engagement": 66
+    },
+    {
+      "t": 16.61,
+      "discomfort": 26,
+      "confidence": 51,
+      "confusion": 5,
+      "engagement": 65
+    },
+    {
+      "t": 16.65,
+      "discomfort": 26,
+      "confidence": 51,
+      "confusion": 3,
+      "engagement": 64
+    },
+    {
+      "t": 16.69,
+      "discomfort": 26,
+      "confidence": 51,
+      "confusion": 4,
+      "engagement": 65
+    },
+    {
+      "t": 16.74,
+      "discomfort": 27,
+      "confidence": 51,
+      "confusion": 2,
+      "engagement": 65
+    },
+    {
+      "t": 16.76,
+      "discomfort": 26,
+      "confidence": 51,
+      "confusion": 1,
+      "engagement": 66
+    },
+    {
+      "t": 16.79,
+      "discomfort": 26,
+      "confidence": 51,
+      "confusion": 1,
+      "engagement": 67
+    },
+    {
+      "t": 16.84,
+      "discomfort": 27,
+      "confidence": 51,
+      "confusion": 0,
+      "engagement": 68
+    },
+    {
+      "t": 16.86,
+      "discomfort": 27,
+      "confidence": 51,
+      "confusion": 0,
+      "engagement": 70
+    },
+    {
+      "t": 16.9,
+      "discomfort": 27,
+      "confidence": 51,
+      "confusion": 0,
+      "engagement": 71
+    },
+    {
+      "t": 16.92,
+      "discomfort": 27,
+      "confidence": 51,
+      "confusion": 0,
+      "engagement": 72
+    },
+    {
+      "t": 16.95,
+      "discomfort": 28,
+      "confidence": 51,
+      "confusion": 0,
+      "engagement": 73
+    },
+    {
+      "t": 17.0,
+      "discomfort": 28,
+      "confidence": 51,
+      "confusion": 1,
+      "engagement": 73
+    },
+    {
+      "t": 17.01,
+      "discomfort": 27,
+      "confidence": 50,
+      "confusion": 2,
+      "engagement": 73
+    },
+    {
+      "t": 17.05,
+      "discomfort": 27,
+      "confidence": 50,
+      "confusion": 3,
+      "engagement": 73
+    },
+    {
+      "t": 17.09,
+      "discomfort": 27,
+      "confidence": 51,
+      "confusion": 4,
+      "engagement": 74
+    },
+    {
+      "t": 17.14,
+      "discomfort": 27,
+      "confidence": 51,
+      "confusion": 5,
+      "engagement": 74
+    },
+    {
+      "t": 17.15,
+      "discomfort": 26,
+      "confidence": 50,
+      "confusion": 5,
+      "engagement": 74
+    },
+    {
+      "t": 17.19,
+      "discomfort": 26,
+      "confidence": 51,
+      "confusion": 5,
+      "engagement": 73
+    },
+    {
+      "t": 17.2,
+      "discomfort": 25,
+      "confidence": 51,
+      "confusion": 6,
+      "engagement": 73
+    },
+    {
+      "t": 17.25,
+      "discomfort": 25,
+      "confidence": 51,
+      "confusion": 6,
+      "engagement": 73
+    },
+    {
+      "t": 17.3,
+      "discomfort": 24,
+      "confidence": 51,
+      "confusion": 6,
+      "engagement": 72
+    },
+    {
+      "t": 17.32,
+      "discomfort": 25,
+      "confidence": 51,
+      "confusion": 6,
+      "engagement": 71
+    },
+    {
+      "t": 17.35,
+      "discomfort": 25,
+      "confidence": 52,
+      "confusion": 6,
+      "engagement": 71
+    },
+    {
+      "t": 17.4,
+      "discomfort": 24,
+      "confidence": 52,
+      "confusion": 6,
+      "engagement": 70
+    },
+    {
+      "t": 17.42,
+      "discomfort": 24,
+      "confidence": 52,
+      "confusion": 6,
+      "engagement": 71
+    },
+    {
+      "t": 17.45,
+      "discomfort": 23,
+      "confidence": 53,
+      "confusion": 6,
+      "engagement": 72
+    },
+    {
+      "t": 17.49,
+      "discomfort": 22,
+      "confidence": 53,
+      "confusion": 7,
+      "engagement": 72
+    },
+    {
+      "t": 17.56,
+      "discomfort": 21,
+      "confidence": 53,
+      "confusion": 7,
+      "engagement": 72
+    },
+    {
+      "t": 17.58,
+      "discomfort": 23,
+      "confidence": 53,
+      "confusion": 7,
+      "engagement": 71
+    },
+    {
+      "t": 17.61,
+      "discomfort": 23,
+      "confidence": 53,
+      "confusion": 7,
+      "engagement": 70
+    },
+    {
+      "t": 17.62,
+      "discomfort": 24,
+      "confidence": 53,
+      "confusion": 4,
+      "engagement": 70
+    },
+    {
+      "t": 17.65,
+      "discomfort": 24,
+      "confidence": 54,
+      "confusion": 3,
+      "engagement": 69
+    },
+    {
+      "t": 17.7,
+      "discomfort": 25,
+      "confidence": 54,
+      "confusion": 1,
+      "engagement": 68
+    },
+    {
+      "t": 17.72,
+      "discomfort": 24,
+      "confidence": 54,
+      "confusion": 1,
+      "engagement": 68
+    },
+    {
+      "t": 17.75,
+      "discomfort": 23,
+      "confidence": 54,
+      "confusion": 2,
+      "engagement": 67
+    },
+    {
+      "t": 17.8,
+      "discomfort": 23,
+      "confidence": 54,
+      "confusion": 3,
+      "engagement": 67
+    },
+    {
+      "t": 17.81,
+      "discomfort": 21,
+      "confidence": 55,
+      "confusion": 4,
+      "engagement": 67
+    },
+    {
+      "t": 17.85,
+      "discomfort": 20,
+      "confidence": 55,
+      "confusion": 5,
+      "engagement": 67
+    },
+    {
+      "t": 17.91,
+      "discomfort": 21,
+      "confidence": 55,
+      "confusion": 6,
+      "engagement": 67
+    },
+    {
+      "t": 17.92,
+      "discomfort": 21,
+      "confidence": 56,
+      "confusion": 6,
+      "engagement": 67
+    },
+    {
+      "t": 17.96,
+      "discomfort": 20,
+      "confidence": 56,
+      "confusion": 7,
+      "engagement": 67
+    },
+    {
+      "t": 18.01,
+      "discomfort": 20,
+      "confidence": 56,
+      "confusion": 7,
+      "engagement": 67
+    },
+    {
+      "t": 18.01,
+      "discomfort": 20,
+      "confidence": 57,
+      "confusion": 7,
+      "engagement": 67
+    },
+    {
+      "t": 18.05,
+      "discomfort": 20,
+      "confidence": 57,
+      "confusion": 7,
+      "engagement": 67
+    },
+    {
+      "t": 18.1,
+      "discomfort": 20,
+      "confidence": 57,
+      "confusion": 7,
+      "engagement": 67
+    },
+    {
+      "t": 18.12,
+      "discomfort": 21,
+      "confidence": 56,
+      "confusion": 4,
+      "engagement": 66
+    },
+    {
+      "t": 18.15,
+      "discomfort": 21,
+      "confidence": 56,
+      "confusion": 2,
+      "engagement": 66
+    },
+    {
+      "t": 18.21,
+      "discomfort": 22,
+      "confidence": 56,
+      "confusion": 1,
+      "engagement": 65
+    },
+    {
+      "t": 18.23,
+      "discomfort": 21,
+      "confidence": 56,
+      "confusion": 1,
+      "engagement": 65
+    },
+    {
+      "t": 18.26,
+      "discomfort": 21,
+      "confidence": 56,
+      "confusion": 0,
+      "engagement": 65
+    },
+    {
+      "t": 18.31,
+      "discomfort": 21,
+      "confidence": 56,
+      "confusion": 0,
+      "engagement": 65
+    },
+    {
+      "t": 18.33,
+      "discomfort": 22,
+      "confidence": 56,
+      "confusion": 1,
+      "engagement": 66
+    },
+    {
+      "t": 18.36,
+      "discomfort": 22,
+      "confidence": 57,
+      "confusion": 2,
+      "engagement": 66
+    },
+    {
+      "t": 18.41,
+      "discomfort": 23,
+      "confidence": 57,
+      "confusion": 3,
+      "engagement": 67
+    },
+    {
+      "t": 18.41,
+      "discomfort": 23,
+      "confidence": 57,
+      "confusion": 3,
+      "engagement": 68
+    },
+    {
+      "t": 18.45,
+      "discomfort": 23,
+      "confidence": 57,
+      "confusion": 3,
+      "engagement": 69
+    },
+    {
+      "t": 18.5,
+      "discomfort": 23,
+      "confidence": 57,
+      "confusion": 4,
+      "engagement": 69
+    },
+    {
+      "t": 18.51,
+      "discomfort": 24,
+      "confidence": 57,
+      "confusion": 4,
+      "engagement": 69
+    },
+    {
+      "t": 18.56,
+      "discomfort": 24,
+      "confidence": 57,
+      "confusion": 4,
+      "engagement": 69
+    },
+    {
+      "t": 18.58,
+      "discomfort": 24,
+      "confidence": 57,
+      "confusion": 4,
+      "engagement": 69
+    },
+    {
+      "t": 18.61,
+      "discomfort": 24,
+      "confidence": 57,
+      "confusion": 4,
+      "engagement": 69
+    },
+    {
+      "t": 18.66,
+      "discomfort": 24,
+      "confidence": 57,
+      "confusion": 2,
+      "engagement": 69
+    },
+    {
+      "t": 18.71,
+      "discomfort": 23,
+      "confidence": 57,
+      "confusion": 2,
+      "engagement": 69
+    },
+    {
+      "t": 18.73,
+      "discomfort": 23,
+      "confidence": 57,
+      "confusion": 3,
+      "engagement": 70
+    },
+    {
+      "t": 18.76,
+      "discomfort": 23,
+      "confidence": 57,
+      "confusion": 3,
+      "engagement": 70
+    },
+    {
+      "t": 18.81,
+      "discomfort": 23,
+      "confidence": 57,
+      "confusion": 3,
+      "engagement": 70
+    },
+    {
+      "t": 18.81,
+      "discomfort": 22,
+      "confidence": 57,
+      "confusion": 4,
+      "engagement": 71
+    },
+    {
+      "t": 18.87,
+      "discomfort": 22,
+      "confidence": 57,
+      "confusion": 4,
+      "engagement": 71
+    },
+    {
+      "t": 18.88,
+      "discomfort": 22,
+      "confidence": 57,
+      "confusion": 4,
+      "engagement": 72
+    },
+    {
+      "t": 18.92,
+      "discomfort": 23,
+      "confidence": 57,
+      "confusion": 4,
+      "engagement": 72
+    },
+    {
+      "t": 18.97,
+      "discomfort": 23,
+      "confidence": 57,
+      "confusion": 4,
+      "engagement": 72
+    },
+    {
+      "t": 18.98,
+      "discomfort": 23,
+      "confidence": 57,
+      "confusion": 4,
+      "engagement": 72
+    },
+    {
+      "t": 19.01,
+      "discomfort": 23,
+      "confidence": 58,
+      "confusion": 4,
+      "engagement": 72
+    },
+    {
+      "t": 19.06,
+      "discomfort": 23,
+      "confidence": 58,
+      "confusion": 4,
+      "engagement": 72
+    },
+    {
+      "t": 19.11,
+      "discomfort": 23,
+      "confidence": 58,
+      "confusion": 4,
+      "engagement": 72
+    },
+    {
+      "t": 19.13,
+      "discomfort": 24,
+      "confidence": 58,
+      "confusion": 5,
+      "engagement": 72
+    },
+    {
+      "t": 19.16,
+      "discomfort": 24,
+      "confidence": 58,
+      "confusion": 5,
+      "engagement": 71
+    },
+    {
+      "t": 19.18,
+      "discomfort": 25,
+      "confidence": 58,
+      "confusion": 5,
+      "engagement": 71
+    },
+    {
+      "t": 19.22,
+      "discomfort": 26,
+      "confidence": 58,
+      "confusion": 5,
+      "engagement": 71
+    },
+    {
+      "t": 19.27,
+      "discomfort": 27,
+      "confidence": 58,
+      "confusion": 5,
+      "engagement": 71
+    },
+    {
+      "t": 19.28,
+      "discomfort": 25,
+      "confidence": 58,
+      "confusion": 5,
+      "engagement": 71
+    },
+    {
+      "t": 19.32,
+      "discomfort": 24,
+      "confidence": 58,
+      "confusion": 5,
+      "engagement": 71
+    },
+    {
+      "t": 19.37,
+      "discomfort": 24,
+      "confidence": 58,
+      "confusion": 6,
+      "engagement": 72
+    },
+    {
+      "t": 19.38,
+      "discomfort": 23,
+      "confidence": 58,
+      "confusion": 6,
+      "engagement": 72
+    },
+    {
+      "t": 19.41,
+      "discomfort": 22,
+      "confidence": 58,
+      "confusion": 6,
+      "engagement": 73
+    },
+    {
+      "t": 19.46,
+      "discomfort": 23,
+      "confidence": 58,
+      "confusion": 5,
+      "engagement": 73
+    },
+    {
+      "t": 19.53,
+      "discomfort": 23,
+      "confidence": 58,
+      "confusion": 4,
+      "engagement": 72
+    },
+    {
+      "t": 19.54,
+      "discomfort": 22,
+      "confidence": 58,
+      "confusion": 4,
+      "engagement": 72
+    },
+    {
+      "t": 19.57,
+      "discomfort": 21,
+      "confidence": 58,
+      "confusion": 2,
+      "engagement": 73
+    },
+    {
+      "t": 19.59,
+      "discomfort": 20,
+      "confidence": 58,
+      "confusion": 3,
+      "engagement": 73
+    },
+    {
+      "t": 19.62,
+      "discomfort": 20,
+      "confidence": 58,
+      "confusion": 4,
+      "engagement": 73
+    },
+    {
+      "t": 19.67,
+      "discomfort": 19,
+      "confidence": 58,
+      "confusion": 5,
+      "engagement": 73
+    },
+    {
+      "t": 19.68,
+      "discomfort": 21,
+      "confidence": 56,
+      "confusion": 6,
+      "engagement": 73
+    },
+    {
+      "t": 19.72,
+      "discomfort": 22,
+      "confidence": 54,
+      "confusion": 6,
+      "engagement": 73
+    },
+    {
+      "t": 19.77,
+      "discomfort": 23,
+      "confidence": 53,
+      "confusion": 4,
+      "engagement": 73
+    },
+    {
+      "t": 19.78,
+      "discomfort": 23,
+      "confidence": 53,
+      "confusion": 4,
+      "engagement": 74
+    },
+    {
+      "t": 19.81,
+      "discomfort": 23,
+      "confidence": 52,
+      "confusion": 5,
+      "engagement": 74
+    },
+    {
+      "t": 19.83,
+      "discomfort": 23,
+      "confidence": 52,
+      "confusion": 4,
+      "engagement": 74
+    },
+    {
+      "t": 19.88,
+      "discomfort": 23,
+      "confidence": 52,
+      "confusion": 3,
+      "engagement": 74
+    },
+    {
+      "t": 19.93,
+      "discomfort": 24,
+      "confidence": 52,
+      "confusion": 3,
+      "engagement": 74
+    },
+    {
+      "t": 19.98,
+      "discomfort": 25,
+      "confidence": 52,
+      "confusion": 2,
+      "engagement": 74
+    },
+    {
+      "t": 19.99,
+      "discomfort": 25,
+      "confidence": 52,
+      "confusion": 1,
+      "engagement": 74
+    },
+    {
+      "t": 20.02,
+      "discomfort": 25,
+      "confidence": 52,
+      "confusion": 0,
+      "engagement": 75
+    },
+    {
+      "t": 20.07,
+      "discomfort": 25,
+      "confidence": 52,
+      "confusion": 0,
+      "engagement": 75
+    },
+    {
+      "t": 20.08,
+      "discomfort": 26,
+      "confidence": 52,
+      "confusion": 0,
+      "engagement": 75
+    },
+    {
+      "t": 20.12,
+      "discomfort": 25,
+      "confidence": 52,
+      "confusion": 1,
+      "engagement": 74
+    },
+    {
+      "t": 20.18,
+      "discomfort": 25,
+      "confidence": 52,
+      "confusion": 3,
+      "engagement": 74
+    },
+    {
+      "t": 20.19,
+      "discomfort": 25,
+      "confidence": 51,
+      "confusion": 4,
+      "engagement": 73
+    },
+    {
+      "t": 20.23,
+      "discomfort": 26,
+      "confidence": 51,
+      "confusion": 4,
+      "engagement": 73
+    },
+    {
+      "t": 20.24,
+      "discomfort": 26,
+      "confidence": 51,
+      "confusion": 5,
+      "engagement": 73
+    },
+    {
+      "t": 20.28,
+      "discomfort": 26,
+      "confidence": 51,
+      "confusion": 5,
+      "engagement": 72
+    },
+    {
+      "t": 20.33,
+      "discomfort": 26,
+      "confidence": 51,
+      "confusion": 5,
+      "engagement": 72
+    },
+    {
+      "t": 20.38,
+      "discomfort": 24,
+      "confidence": 51,
+      "confusion": 5,
+      "engagement": 71
+    },
+    {
+      "t": 20.39,
+      "discomfort": 24,
+      "confidence": 51,
+      "confusion": 3,
+      "engagement": 72
+    },
+    {
+      "t": 20.42,
+      "discomfort": 24,
+      "confidence": 51,
+      "confusion": 2,
+      "engagement": 72
+    },
+    {
+      "t": 20.47,
+      "discomfort": 24,
+      "confidence": 51,
+      "confusion": 1,
+      "engagement": 73
+    },
+    {
+      "t": 20.48,
+      "discomfort": 24,
+      "confidence": 51,
+      "confusion": 1,
+      "engagement": 73
+    },
+    {
+      "t": 20.53,
+      "discomfort": 24,
+      "confidence": 51,
+      "confusion": 0,
+      "engagement": 73
+    },
+    {
+      "t": 20.55,
+      "discomfort": 24,
+      "confidence": 51,
+      "confusion": 0,
+      "engagement": 73
+    },
+    {
+      "t": 20.58,
+      "discomfort": 23,
+      "confidence": 51,
+      "confusion": 0,
+      "engagement": 73
+    },
+    {
+      "t": 20.63,
+      "discomfort": 21,
+      "confidence": 51,
+      "confusion": 4,
+      "engagement": 73
+    },
+    {
+      "t": 20.65,
+      "discomfort": 20,
+      "confidence": 52,
+      "confusion": 7,
+      "engagement": 74
+    },
+    {
+      "t": 20.68,
+      "discomfort": 18,
+      "confidence": 54,
+      "confusion": 9,
+      "engagement": 75
+    },
+    {
+      "t": 20.73,
+      "discomfort": 17,
+      "confidence": 55,
+      "confusion": 13,
+      "engagement": 75
+    },
+    {
+      "t": 20.78,
+      "discomfort": 17,
+      "confidence": 56,
+      "confusion": 16,
+      "engagement": 75
+    },
+    {
+      "t": 20.8,
+      "discomfort": 17,
+      "confidence": 56,
+      "confusion": 18,
+      "engagement": 76
+    },
+    {
+      "t": 20.84,
+      "discomfort": 16,
+      "confidence": 57,
+      "confusion": 18,
+      "engagement": 76
+    },
+    {
+      "t": 20.86,
+      "discomfort": 17,
+      "confidence": 57,
+      "confusion": 19,
+      "engagement": 76
+    },
+    {
+      "t": 20.89,
+      "discomfort": 16,
+      "confidence": 57,
+      "confusion": 19,
+      "engagement": 77
+    },
+    {
+      "t": 20.93,
+      "discomfort": 16,
+      "confidence": 58,
+      "confusion": 19,
+      "engagement": 77
+    },
+    {
+      "t": 20.95,
+      "discomfort": 18,
+      "confidence": 58,
+      "confusion": 19,
+      "engagement": 78
+    },
+    {
+      "t": 20.98,
+      "discomfort": 18,
+      "confidence": 58,
+      "confusion": 18,
+      "engagement": 78
+    },
+    {
+      "t": 21.03,
+      "discomfort": 19,
+      "confidence": 58,
+      "confusion": 19,
+      "engagement": 80
+    },
+    {
+      "t": 21.05,
+      "discomfort": 19,
+      "confidence": 58,
+      "confusion": 19,
+      "engagement": 82
+    },
+    {
+      "t": 21.08,
+      "discomfort": 19,
+      "confidence": 58,
+      "confusion": 19,
+      "engagement": 83
+    },
+    {
+      "t": 21.13,
+      "discomfort": 20,
+      "confidence": 58,
+      "confusion": 19,
+      "engagement": 84
+    },
+    {
+      "t": 21.14,
+      "discomfort": 20,
+      "confidence": 58,
+      "confusion": 19,
+      "engagement": 84
+    },
+    {
+      "t": 21.19,
+      "discomfort": 20,
+      "confidence": 58,
+      "confusion": 19,
+      "engagement": 85
+    },
+    {
+      "t": 21.24,
+      "discomfort": 20,
+      "confidence": 58,
+      "confusion": 19,
+      "engagement": 85
+    },
+    {
+      "t": 21.25,
+      "discomfort": 20,
+      "confidence": 58,
+      "confusion": 19,
+      "engagement": 85
+    },
+    {
+      "t": 21.29,
+      "discomfort": 19,
+      "confidence": 58,
+      "confusion": 19,
+      "engagement": 84
+    },
+    {
+      "t": 21.33,
+      "discomfort": 18,
+      "confidence": 58,
+      "confusion": 20,
+      "engagement": 84
+    },
+    {
+      "t": 21.34,
+      "discomfort": 17,
+      "confidence": 58,
+      "confusion": 21,
+      "engagement": 84
+    },
+    {
+      "t": 21.38,
+      "discomfort": 17,
+      "confidence": 58,
+      "confusion": 22,
+      "engagement": 84
+    },
+    {
+      "t": 21.43,
+      "discomfort": 17,
+      "confidence": 58,
+      "confusion": 24,
+      "engagement": 83
+    },
+    {
+      "t": 21.45,
+      "discomfort": 17,
+      "confidence": 58,
+      "confusion": 26,
+      "engagement": 83
+    },
+    {
+      "t": 21.5,
+      "discomfort": 17,
+      "confidence": 58,
+      "confusion": 27,
+      "engagement": 83
+    },
+    {
+      "t": 21.54,
+      "discomfort": 17,
+      "confidence": 58,
+      "confusion": 27,
+      "engagement": 83
+    },
+    {
+      "t": 21.56,
+      "discomfort": 17,
+      "confidence": 58,
+      "confusion": 28,
+      "engagement": 82
+    },
+    {
+      "t": 21.59,
+      "discomfort": 17,
+      "confidence": 58,
+      "confusion": 28,
+      "engagement": 82
+    },
+    {
+      "t": 21.64,
+      "discomfort": 17,
+      "confidence": 58,
+      "confusion": 29,
+      "engagement": 82
+    },
+    {
+      "t": 21.65,
+      "discomfort": 17,
+      "confidence": 58,
+      "confusion": 29,
+      "engagement": 82
+    },
+    {
+      "t": 21.69,
+      "discomfort": 17,
+      "confidence": 58,
+      "confusion": 29,
+      "engagement": 82
+    },
+    {
+      "t": 21.73,
+      "discomfort": 17,
+      "confidence": 58,
+      "confusion": 30,
+      "engagement": 82
+    },
+    {
+      "t": 21.75,
+      "discomfort": 17,
+      "confidence": 58,
+      "confusion": 30,
+      "engagement": 82
+    },
+    {
+      "t": 21.78,
+      "discomfort": 17,
+      "confidence": 58,
+      "confusion": 30,
+      "engagement": 82
+    },
+    {
+      "t": 21.79,
+      "discomfort": 17,
+      "confidence": 58,
+      "confusion": 30,
+      "engagement": 82
+    },
+    {
+      "t": 21.85,
+      "discomfort": 17,
+      "confidence": 58,
+      "confusion": 29,
+      "engagement": 82
+    },
+    {
+      "t": 21.89,
+      "discomfort": 17,
+      "confidence": 58,
+      "confusion": 29,
+      "engagement": 81
+    },
+    {
+      "t": 21.94,
+      "discomfort": 17,
+      "confidence": 58,
+      "confusion": 29,
+      "engagement": 80
+    },
+    {
+      "t": 21.95,
+      "discomfort": 16,
+      "confidence": 58,
+      "confusion": 29,
+      "engagement": 79
+    },
+    {
+      "t": 21.99,
+      "discomfort": 16,
+      "confidence": 58,
+      "confusion": 29,
+      "engagement": 79
+    },
+    {
+      "t": 22.04,
+      "discomfort": 16,
+      "confidence": 58,
+      "confusion": 29,
+      "engagement": 79
+    },
+    {
+      "t": 22.06,
+      "discomfort": 16,
+      "confidence": 58,
+      "confusion": 28,
+      "engagement": 78
+    },
+    {
+      "t": 22.09,
+      "discomfort": 16,
+      "confidence": 58,
+      "confusion": 28,
+      "engagement": 78
+    },
+    {
+      "t": 22.15,
+      "discomfort": 16,
+      "confidence": 58,
+      "confusion": 27,
+      "engagement": 78
+    },
+    {
+      "t": 22.17,
+      "discomfort": 16,
+      "confidence": 58,
+      "confusion": 26,
+      "engagement": 78
+    },
+    {
+      "t": 22.2,
+      "discomfort": 16,
+      "confidence": 58,
+      "confusion": 25,
+      "engagement": 78
+    },
+    {
+      "t": 22.22,
+      "discomfort": 16,
+      "confidence": 58,
+      "confusion": 24,
+      "engagement": 78
+    },
+    {
+      "t": 22.25,
+      "discomfort": 16,
+      "confidence": 58,
+      "confusion": 23,
+      "engagement": 77
+    },
+    {
+      "t": 22.29,
+      "discomfort": 16,
+      "confidence": 58,
+      "confusion": 22,
+      "engagement": 77
+    },
+    {
+      "t": 22.34,
+      "discomfort": 16,
+      "confidence": 58,
+      "confusion": 22,
+      "engagement": 77
+    },
+    {
+      "t": 22.36,
+      "discomfort": 17,
+      "confidence": 58,
+      "confusion": 21,
+      "engagement": 77
+    },
+    {
+      "t": 22.39,
+      "discomfort": 17,
+      "confidence": 58,
+      "confusion": 21,
+      "engagement": 78
+    },
+    {
+      "t": 22.44,
+      "discomfort": 18,
+      "confidence": 58,
+      "confusion": 20,
+      "engagement": 77
+    },
+    {
+      "t": 22.45,
+      "discomfort": 19,
+      "confidence": 57,
+      "confusion": 19,
+      "engagement": 74
+    },
+    {
+      "t": 22.5,
+      "discomfort": 19,
+      "confidence": 57,
+      "confusion": 19,
+      "engagement": 73
+    },
+    {
+      "t": 22.51,
+      "discomfort": 20,
+      "confidence": 57,
+      "confusion": 18,
+      "engagement": 71
+    },
+    {
+      "t": 22.55,
+      "discomfort": 20,
+      "confidence": 56,
+      "confusion": 18,
+      "engagement": 70
+    },
+    {
+      "t": 22.6,
+      "discomfort": 21,
+      "confidence": 56,
+      "confusion": 17,
+      "engagement": 69
+    },
+    {
+      "t": 22.61,
+      "discomfort": 21,
+      "confidence": 56,
+      "confusion": 16,
+      "engagement": 68
+    },
+    {
+      "t": 22.65,
+      "discomfort": 21,
+      "confidence": 56,
+      "confusion": 16,
+      "engagement": 67
+    },
+    {
+      "t": 22.7,
+      "discomfort": 20,
+      "confidence": 56,
+      "confusion": 17,
+      "engagement": 67
+    },
+    {
+      "t": 22.74,
+      "discomfort": 20,
+      "confidence": 56,
+      "confusion": 17,
+      "engagement": 68
+    },
+    {
+      "t": 22.76,
+      "discomfort": 20,
+      "confidence": 56,
+      "confusion": 16,
+      "engagement": 68
+    },
+    {
+      "t": 22.81,
+      "discomfort": 20,
+      "confidence": 56,
+      "confusion": 17,
+      "engagement": 68
+    },
+    {
+      "t": 22.83,
+      "discomfort": 20,
+      "confidence": 56,
+      "confusion": 17,
+      "engagement": 68
+    },
+    {
+      "t": 22.85,
+      "discomfort": 20,
+      "confidence": 56,
+      "confusion": 17,
+      "engagement": 68
+    },
+    {
+      "t": 22.9,
+      "discomfort": 20,
+      "confidence": 56,
+      "confusion": 17,
+      "engagement": 68
+    },
+    {
+      "t": 22.92,
+      "discomfort": 20,
+      "confidence": 57,
+      "confusion": 17,
+      "engagement": 69
+    },
+    {
+      "t": 22.95,
+      "discomfort": 20,
+      "confidence": 57,
+      "confusion": 17,
+      "engagement": 69
+    },
+    {
+      "t": 23.0,
+      "discomfort": 20,
+      "confidence": 57,
+      "confusion": 17,
+      "engagement": 70
+    },
+    {
+      "t": 23.01,
+      "discomfort": 19,
+      "confidence": 57,
+      "confusion": 18,
+      "engagement": 70
+    },
+    {
+      "t": 23.05,
+      "discomfort": 19,
+      "confidence": 57,
+      "confusion": 18,
+      "engagement": 70
+    },
+    {
+      "t": 23.09,
+      "discomfort": 19,
+      "confidence": 57,
+      "confusion": 18,
+      "engagement": 71
+    },
+    {
+      "t": 23.11,
+      "discomfort": 18,
+      "confidence": 57,
+      "confusion": 18,
+      "engagement": 70
+    },
+    {
+      "t": 23.16,
+      "discomfort": 17,
+      "confidence": 57,
+      "confusion": 19,
+      "engagement": 70
+    },
+    {
+      "t": 23.21,
+      "discomfort": 17,
+      "confidence": 56,
+      "confusion": 19,
+      "engagement": 69
+    },
+    {
+      "t": 23.22,
+      "discomfort": 17,
+      "confidence": 56,
+      "confusion": 19,
+      "engagement": 69
+    },
+    {
+      "t": 23.25,
+      "discomfort": 17,
+      "confidence": 56,
+      "confusion": 19,
+      "engagement": 69
+    },
+    {
+      "t": 23.3,
+      "discomfort": 18,
+      "confidence": 56,
+      "confusion": 19,
+      "engagement": 68
+    },
+    {
+      "t": 23.31,
+      "discomfort": 18,
+      "confidence": 56,
+      "confusion": 19,
+      "engagement": 67
+    },
+    {
+      "t": 23.36,
+      "discomfort": 19,
+      "confidence": 56,
+      "confusion": 19,
+      "engagement": 67
+    },
+    {
+      "t": 23.4,
+      "discomfort": 19,
+      "confidence": 55,
+      "confusion": 18,
+      "engagement": 68
+    },
+    {
+      "t": 23.41,
+      "discomfort": 19,
+      "confidence": 55,
+      "confusion": 17,
+      "engagement": 69
+    },
+    {
+      "t": 23.46,
+      "discomfort": 20,
+      "confidence": 55,
+      "confusion": 17,
+      "engagement": 69
+    },
+    {
+      "t": 23.51,
+      "discomfort": 20,
+      "confidence": 55,
+      "confusion": 17,
+      "engagement": 69
+    },
+    {
+      "t": 23.52,
+      "discomfort": 20,
+      "confidence": 55,
+      "confusion": 16,
+      "engagement": 69
+    },
+    {
+      "t": 23.56,
+      "discomfort": 19,
+      "confidence": 55,
+      "confusion": 16,
+      "engagement": 69
+    },
+    {
+      "t": 23.61,
+      "discomfort": 19,
+      "confidence": 55,
+      "confusion": 17,
+      "engagement": 70
+    },
+    {
+      "t": 23.63,
+      "discomfort": 18,
+      "confidence": 55,
+      "confusion": 18,
+      "engagement": 71
+    },
+    {
+      "t": 23.65,
+      "discomfort": 17,
+      "confidence": 55,
+      "confusion": 18,
+      "engagement": 71
+    },
+    {
+      "t": 23.7,
+      "discomfort": 17,
+      "confidence": 56,
+      "confusion": 20,
+      "engagement": 72
+    },
+    {
+      "t": 23.72,
+      "discomfort": 17,
+      "confidence": 56,
+      "confusion": 22,
+      "engagement": 72
+    },
+    {
+      "t": 23.75,
+      "discomfort": 17,
+      "confidence": 55,
+      "confusion": 24,
+      "engagement": 72
+    },
+    {
+      "t": 23.77,
+      "discomfort": 17,
+      "confidence": 56,
+      "confusion": 26,
+      "engagement": 73
+    },
+    {
+      "t": 23.81,
+      "discomfort": 17,
+      "confidence": 56,
+      "confusion": 27,
+      "engagement": 73
+    },
+    {
+      "t": 23.86,
+      "discomfort": 17,
+      "confidence": 55,
+      "confusion": 28,
+      "engagement": 73
+    },
+    {
+      "t": 23.91,
+      "discomfort": 17,
+      "confidence": 55,
+      "confusion": 28,
+      "engagement": 72
+    }
+  ],
+  "verdicts": {
+    "discomfort": "Candidate appeared at ease throughout.",
+    "confidence": "Moderately confident with some wavering moments.",
+    "confusion": "Followed topics clearly \u2014 minimal confusion signals.",
+    "engagement": "Highly engaged \u2014 nodding, open eyes, forward lean observed."
+  }
+}

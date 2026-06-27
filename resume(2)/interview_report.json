@@ -1,0 +1,183 @@
+{
+  "total_questions": 4,
+  "total_duration": "0m 26s",
+  "questions": [
+    {
+      "question_number": 1,
+      "duration": "0m 15s",
+      "duration_seconds": 15.6,
+      "readiness": {
+        "score": 62.0,
+        "label": "Adequate"
+      },
+      "stability": 87.8,
+      "emotions": {
+        "discomfort": {
+          "weighted": 39.9,
+          "label": "Mild",
+          "peak": 50.0
+        },
+        "confidence": {
+          "weighted": 72.8,
+          "label": "Good",
+          "peak": 78.0
+        },
+        "confusion": {
+          "weighted": 0.0,
+          "label": "Clear",
+          "peak": 0.0
+        },
+        "engagement": {
+          "weighted": 38.3,
+          "label": "Moderate",
+          "peak": 45.0
+        }
+      },
+      "peak_discomfort_t": [
+        10.65,
+        50
+      ]
+    },
+    {
+      "question_number": 2,
+      "duration": "0m 3s",
+      "duration_seconds": 3.1,
+      "readiness": {
+        "score": 63.9,
+        "label": "Adequate"
+      },
+      "stability": 97.7,
+      "emotions": {
+        "discomfort": {
+          "weighted": 30.4,
+          "label": "Mild",
+          "peak": 33.0
+        },
+        "confidence": {
+          "weighted": 74.0,
+          "label": "Good",
+          "peak": 74.0
+        },
+        "confusion": {
+          "weighted": 0.0,
+          "label": "Clear",
+          "peak": 0.0
+        },
+        "engagement": {
+          "weighted": 35.3,
+          "label": "Moderate",
+          "peak": 37.0
+        }
+      },
+      "peak_discomfort_t": [
+        2.97,
+        33
+      ]
+    },
+    {
+      "question_number": 3,
+      "duration": "0m 3s",
+      "duration_seconds": 3.1,
+      "readiness": {
+        "score": 66.1,
+        "label": "Adequate"
+      },
+      "stability": 96.0,
+      "emotions": {
+        "discomfort": {
+          "weighted": 28.8,
+          "label": "Mild",
+          "peak": 34.0
+        },
+        "confidence": {
+          "weighted": 75.0,
+          "label": "High",
+          "peak": 75.0
+        },
+        "confusion": {
+          "weighted": 0.0,
+          "label": "Clear",
+          "peak": 0.0
+        },
+        "engagement": {
+          "weighted": 40.2,
+          "label": "Moderate",
+          "peak": 44.0
+        }
+      },
+      "peak_discomfort_t": [
+        0.03,
+        34
+      ]
+    },
+    {
+      "question_number": 4,
+      "duration": "0m 5s",
+      "duration_seconds": 5.1,
+      "readiness": {
+        "score": 64.3,
+        "label": "Adequate"
+      },
+      "stability": 95.5,
+      "emotions": {
+        "discomfort": {
+          "weighted": 30.5,
+          "label": "Mild",
+          "peak": 36.0
+        },
+        "confidence": {
+          "weighted": 73.6,
+          "label": "Good",
+          "peak": 75.0
+        },
+        "confusion": {
+          "weighted": 0.0,
+          "label": "Clear",
+          "peak": 0.0
+        },
+        "engagement": {
+          "weighted": 37.1,
+          "label": "Moderate",
+          "peak": 41.0
+        }
+      },
+      "peak_discomfort_t": [
+        4.28,
+        36
+      ]
+    }
+  ],
+  "overall_emotions": {
+    "discomfort": {
+      "average": 32.4,
+      "best": 28.8,
+      "worst": 39.9,
+      "trend": "\u2193 declining"
+    },
+    "confidence": {
+      "average": 73.8,
+      "best": 75.0,
+      "worst": 72.8,
+      "trend": "\u2192 stable"
+    },
+    "confusion": {
+      "average": 0.0,
+      "best": 0.0,
+      "worst": 0.0,
+      "trend": "\u2192 stable"
+    },
+    "engagement": {
+      "average": 37.7,
+      "best": 40.2,
+      "worst": 35.3,
+      "trend": "\u2192 stable"
+    }
+  },
+  "overall_readiness": {
+    "average": 64.1,
+    "best_q": 3,
+    "worst_q": 1,
+    "trend": "\u2192 stable",
+    "label": "Adequate"
+  }
+}
